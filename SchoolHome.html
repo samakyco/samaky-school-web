@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script>if (window.top === window) { try { sessionStorage.setItem('samaky-start', location.pathname.split('/').pop() || 'SchoolHome.html'); } catch (e) {} location.replace('/'); }</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>School overview dashboard · Samaky for Schools</title>
+<link rel="icon" href="brand/maky.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&amp;family=Poppins:wght@400;500;600;700&amp;display=swap">
+<style>
+body{margin:0;background:#FAF9F5}
+a{color:#471C72}a:hover{color:#2E1149}
+</style>
+<script src="dc-lite.js"></script>
+</head>
+<body>
+<div id="dc-root"></div>
+<template id="dc-template">
+<div style="min-height: 100vh; display: flex; flex-wrap: wrap; align-items: stretch; background: #FAF9F5; font-family: 'Poppins', system-ui, sans-serif; color: #1A1A1A;">
+
+  <nav aria-label="Main" style="flex: 1 1 248px; box-sizing: border-box; background: #471C72; color: #FFFFFF; padding: 28px 18px; display: flex; flex-direction: column; gap: 4px;">
+    <a href="SchoolHome.html" style="display: block; padding: 0 10px 18px;"><img src="brand/samaky-logo-dark.svg" alt="Samaky, Catalyze Kindness" style="display: block; width: 190px; height: auto;"></a>
+    <div style="margin: 0 2px 16px; padding: 14px; border-radius: 16px; background: #5B2E88; display: flex; align-items: center; gap: 12px;">
+      <img src="brand/ust-shield.png" alt="University of St. Thomas shield" style="width: 48px; height: 48px; flex: 0 0 48px; border-radius: 12px; border: 0; box-sizing: border-box; background: #FFFFFF; object-fit: contain; display: block;">
+      <div style="min-width: 0; line-height: 1.35;"><div style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px;"><span style="font-weight: 600; font-size: 15px; color: #FAF9F5;">University of St. Thomas</span><span style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; border-radius: 999px; padding: 2px 8px; background: #F3E6DC; color: #7A4A21;">Demo</span></div><div style="font-size: 12px; color: #E3D7F0; margin-top: 2px;">Service Learning Office · Fall 2026</div></div>
+    </div>
+    <div style="font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: #D9CCE8; padding: 0 12px 6px;">Overview</div>
+    <a href="SchoolHome.html" aria-current="page" style="display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 0 12px; border-radius: 12px; text-decoration: none; font-size: 15px; white-space: nowrap; background: #FFFFFF; color: #471C72; font-weight: 700;"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>Home</a>
+    <a href="SchoolCalendar.html" style="display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 0 12px; border-radius: 12px; text-decoration: none; font-size: 15px; white-space: nowrap; color: #FFFFFF;"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4M16 2v4M3 10h18M8 14h2M14 14h2M8 17h2"/></svg>Calendar</a>
+    <a href="SchoolEvents.html" style="display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 0 12px; border-radius: 12px; text-decoration: none; font-size: 15px; white-space: nowrap; color: #FFFFFF;"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4M5 4h11l-2 4 2 4H5"/></svg>Our events</a>
+    <a href="SchoolReports.html" style="display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 0 12px; border-radius: 12px; text-decoration: none; font-size: 15px; white-space: nowrap; color: #FFFFFF;"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>Reports</a>
+    <div style="font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: #D9CCE8; padding: 18px 12px 6px;">Review</div>
+    <a href="SchoolApprove.html" style="display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 0 12px; border-radius: 12px; text-decoration: none; font-size: 15px; white-space: nowrap; color: #FFFFFF;"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>Approve hours<span style="margin-left: auto; background: #B97F5B; color: #1A1A1A; font-size: 12px; font-weight: 700; border-radius: 999px; padding: 2px 8px;">6</span></a>
+    <a href="SchoolExpenses.html" style="display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 0 12px; border-radius: 12px; text-decoration: none; font-size: 15px; white-space: nowrap; color: #FFFFFF;"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h12v20l-3-2-3 2-3-2-3 2z"/><path d="M9 7h6M9 11h6M9 15h4"/></svg>Expenses<span style="margin-left: auto; background: #B97F5B; color: #1A1A1A; font-size: 12px; font-weight: 700; border-radius: 999px; padding: 2px 8px;">3</span></a>
+    <a href="SchoolReflections.html" style="display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 0 12px; border-radius: 12px; text-decoration: none; font-size: 15px; white-space: nowrap; color: #FFFFFF;"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9h8M8 12h5"/></svg>Reflections<span style="margin-left: auto; background: #B97F5B; color: #1A1A1A; font-size: 12px; font-weight: 700; border-radius: 999px; padding: 2px 8px;">6</span></a>
+    <a href="SchoolTranscripts.html" style="display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 0 12px; border-radius: 12px; text-decoration: none; font-size: 15px; white-space: nowrap; color: #FFFFFF;"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></svg>Transcripts</a>
+    <div style="font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: #D9CCE8; padding: 18px 12px 6px;">Students and courses</div>
+    <a href="SchoolStudents.html" style="display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 0 12px; border-radius: 12px; text-decoration: none; font-size: 15px; white-space: nowrap; color: #FFFFFF;"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="4"/><path d="M2 21c0-4 3-6 7-6s7 2 7 6M17 4a4 4 0 0 1 0 8M22 21c0-3-2-5-4-5.5"/></svg>Students</a>
+    <a href="SchoolPrograms.html" style="display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 0 12px; border-radius: 12px; text-decoration: none; font-size: 15px; white-space: nowrap; color: #FFFFFF;"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 9 5-9 5-9-5z"/><path d="m3 13 9 5 9-5"/></svg>Programs</a>
+    <a href="SchoolCourses.html" style="display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 0 12px; border-radius: 12px; text-decoration: none; font-size: 15px; white-space: nowrap; color: #FFFFFF;"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h6a3 3 0 0 1 3 3v14a2 2 0 0 0-2-2H4zM20 4h-6a3 3 0 0 0-3 3v14a2 2 0 0 1 2-2h7z"/></svg>Courses</a>
+    <a href="SchoolPartners.html" style="display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 0 12px; border-radius: 12px; text-decoration: none; font-size: 15px; white-space: nowrap; color: #FFFFFF;"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-8-5-8-11a4.5 4.5 0 0 1 8-3 4.5 4.5 0 0 1 8 3c0 6-8 11-8 11z"/></svg>Partners</a>
+    <div style="font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: #D9CCE8; padding: 18px 12px 6px;">Setup</div>
+    <a href="SchoolCanvas.html" style="display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 0 12px; border-radius: 12px; text-decoration: none; font-size: 15px; white-space: nowrap; color: #FFFFFF;"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>Connect Canvas</a>
+    <a href="SchoolProfile.html" style="display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 0 12px; border-radius: 12px; text-decoration: none; font-size: 15px; white-space: nowrap; color: #FFFFFF;"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V6l8-3 8 3v15M9 21v-5h6v5M9 9h.01M15 9h.01M9 13h.01M15 13h.01"/></svg>Office and team</a>
+    <a href="SchoolMaky.html" style="display: flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 14px 0 8px; margin-top: auto; border-radius: 14px; background: #FAF9F5; color: #1A1A1A; text-decoration: none; font-weight: 600; font-size: 15px;"><img src="brand/maky.png" alt="" style="width: 34px; height: 34px; border-radius: 999px; object-fit: cover; background: #FAF9F5;">Ask Maky</a>
+    <div style="height: 8px;"></div>
+  </nav>
+
+  <main style="flex: 999 1 560px; min-width: 0; box-sizing: border-box; padding: 28px clamp(16px, 3vw, 40px) 48px; display: flex; flex-direction: column; gap: 24px;">
+    <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px;">
+      <label for="q" style="position: absolute; left: -9999px;">Search</label>
+      <input id="q" type="search" placeholder="Search students, courses or partners" style="flex: 1 1 280px; min-height: 48px; box-sizing: border-box; border: 1.5px solid #E0DCCD; border-radius: 999px; padding: 0 20px; font: inherit; font-size: 15px; background: #FFFFFF; color: #1A1A1A;">
+      <button type="button" aria-label="Notifications" style="width: 48px; height: 48px; border-radius: 999px; border: 0; background: #1A1A1A; color: #FAF9F5; display: flex; align-items: center; justify-content: center; cursor: pointer;"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9M10 21a2 2 0 0 0 4 0"/></svg></button>
+    </div>
+
+    <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 18px;">
+      <div style="flex: 1 1 420px;">
+        <h1 style="margin: 0; font-family: 'Fraunces', Georgia, serif; font-size: clamp(32px, 3.6vw, 44px); line-height: 1.05; letter-spacing: -1px;">Overview dashboard</h1>
+        <p style="margin: 10px 0 0; font-size: 16px; line-height: 1.5; color: #5E5B53;">University of St. Thomas · Hours from Jan to Oct 2026</p>
+      </div>
+      <button type="button" style="display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 0 22px; border-radius: 999px; font: inherit; font-weight: 700; font-size: 15px; cursor: pointer; text-decoration: none; box-sizing: border-box; border: 2px solid #471C72; background: #FFFFFF; color: #471C72;"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>PDF</button>
+    </div>
+
+    <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px;">
+      <label for="major" style="position: absolute; left: -9999px;">Filter by major</label>
+      <select id="major" value="{{major}}" onChange="{{pickMajor}}" style="flex: 0 1 380px; min-height: 52px; box-sizing: border-box; border: 1.5px solid #E0DCCD; border-radius: 16px; padding: 0 16px; font: inherit; font-size: 16px; background: #FFFFFF; color: #1A1A1A; cursor: pointer;">
+        <option value="all">All majors</option>
+        <option value="nursing">Nursing</option>
+        <option value="business">Business</option>
+        <option value="education">Education</option>
+        <option value="biology">Biology</option>
+        <option value="psychology">Psychology</option>
+        <option value="engineering">Engineering</option>
+      </select>
+      <span style="font-size: 14px; color: #5E5B53;">Showing {{showing}}</span>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px;">
+      <div style="background: #FFFFFF; border: 1px solid #E0DCCD; border-radius: 24px; box-sizing: border-box; padding: 22px; display: flex; flex-direction: column; gap: 6px; min-height: 168px;">
+        <div style="font-size: 15px; color: #5E5B53;">Students on Samaky</div>
+        <div style="font-family: 'Fraunces', Georgia, serif; font-weight: 700; font-size: 52px; line-height: 1.05; margin-top: auto;">{{s.students}}</div>
+        <div style="font-size: 14px; color: #5E5B53;">Profiles linked to this school</div>
+      </div>
+      <div style="background: #FFFFFF; border: 1px solid #E0DCCD; border-radius: 24px; box-sizing: border-box; padding: 22px; display: flex; flex-direction: column; gap: 6px; min-height: 168px;">
+        <div style="font-size: 15px; color: #5E5B53;">Verified service hours</div>
+        <div style="font-family: 'Fraunces', Georgia, serif; font-weight: 700; font-size: 52px; line-height: 1.05; margin-top: auto; color: #471C72;">{{s.hours}}</div>
+        <div style="font-size: 14px; color: #5E5B53;">Confirmed by a partner since launch</div>
+      </div>
+      <div style="background: #FFFFFF; border: 1px solid #E0DCCD; border-radius: 24px; box-sizing: border-box; padding: 22px; display: flex; flex-direction: column; gap: 6px; min-height: 168px;">
+        <div style="font-size: 15px; color: #5E5B53;">Community courses</div>
+        <div style="font-family: 'Fraunces', Georgia, serif; font-weight: 700; font-size: 52px; line-height: 1.05; margin-top: auto;">{{s.courses}}</div>
+        <div style="font-size: 14px; color: #5E5B53;">Service-learning courses run through Samaky</div>
+      </div>
+      <div style="background: #FFFFFF; border: 1px solid #E0DCCD; border-radius: 24px; box-sizing: border-box; padding: 22px; display: flex; flex-direction: column; gap: 6px; min-height: 168px;">
+        <div style="font-size: 15px; color: #5E5B53;">Community partners</div>
+        <div style="font-family: 'Fraunces', Georgia, serif; font-weight: 700; font-size: 52px; line-height: 1.05; margin-top: auto;">{{s.partners}}</div>
+        <div style="font-size: 14px; color: #5E5B53;">Nonprofits where students served</div>
+      </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px;">
+      <a href="SchoolApprove.html" style="background: #F9F6FC; border: 1.5px solid #471C72; border-radius: 24px; padding: 22px; display: flex; align-items: center; gap: 16px; text-decoration: none; color: #1A1A1A;">
+        <span style="font-family: 'Fraunces', Georgia, serif; font-weight: 700; font-size: 40px; color: #471C72; line-height: 1;">6</span>
+        <span style="flex: 1 1 auto;"><span style="display: block; font-weight: 700; font-size: 16px;">Hours waiting for your approval</span><span style="display: block; font-size: 14px; color: #5E5B53; margin-top: 2px;">Already verified by the nonprofit</span></span>
+        <span style="font-weight: 700; font-size: 14px; color: #471C72;">Review</span>
+      </a>
+      <a href="SchoolExpenses.html" style="background: #FFFFFF; border: 1px solid #E0DCCD; border-radius: 24px; box-sizing: border-box; padding: 22px; display: flex; align-items: center; gap: 16px; text-decoration: none; color: #1A1A1A;">
+        <span style="font-family: 'Fraunces', Georgia, serif; font-weight: 700; font-size: 40px; line-height: 1;">3</span>
+        <span style="flex: 1 1 auto;"><span style="display: block; font-weight: 700; font-size: 16px;">Expense requests to review</span><span style="display: block; font-size: 14px; color: #5E5B53; margin-top: 2px;">$52.77 in mileage and rideshare</span></span>
+        <span style="font-weight: 700; font-size: 14px; color: #471C72;">Review</span>
+      </a>
+    </div>
+
+    <section style="border-top: 1px solid #E0DCCD; padding-top: 24px;">
+      <h2 style="margin: 0; font-family: 'Fraunces', Georgia, serif; font-size: 24px;">Explore the report</h2>
+      <p style="margin: 4px 0 16px; font-size: 15px; color: #5E5B53;">Tap a card to see the details</p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 18px;">
+        <a href="SchoolStories.html" style="background: #FFFFFF; border: 1px solid #E0DCCD; border-radius: 24px; box-sizing: border-box; padding: 26px 18px; display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center; text-decoration: none; color: #1A1A1A; min-height: 190px;"><span style="width: 84px; height: 84px; border-radius: 22px; background: #C084A6; color: #FFFFFF; display: flex; align-items: center; justify-content: center;"><svg aria-hidden="true" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg></span><span style="font-weight: 700; font-size: 17px;">Student stories</span></a>
+        <a href="SchoolReports.html" style="background: #FFFFFF; border: 1px solid #E0DCCD; border-radius: 24px; box-sizing: border-box; padding: 26px 18px; display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center; text-decoration: none; color: #1A1A1A; min-height: 190px;"><span style="width: 84px; height: 84px; border-radius: 22px; background: #A585C4; color: #FFFFFF; display: flex; align-items: center; justify-content: center;"><svg aria-hidden="true" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="4"/><path d="M2 21c0-4 3-6 7-6s7 2 7 6M17 4a4 4 0 0 1 0 8M22 21c0-3-2-5-4-5.5"/></svg></span><span style="font-weight: 700; font-size: 17px;">Students by major</span></a>
+        <a href="SchoolGoals.html" style="background: #FFFFFF; border: 1px solid #E0DCCD; border-radius: 24px; box-sizing: border-box; padding: 26px 18px; display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center; text-decoration: none; color: #1A1A1A; min-height: 190px;"><span style="width: 84px; height: 84px; border-radius: 22px; background: #94B7AE; color: #FFFFFF; display: flex; align-items: center; justify-content: center;"><svg aria-hidden="true" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></span><span style="font-weight: 700; font-size: 17px;">Global goals</span></a>
+        <a href="SchoolLeaderboard.html" style="background: #FFFFFF; border: 1px solid #E0DCCD; border-radius: 24px; box-sizing: border-box; padding: 26px 18px; display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center; text-decoration: none; color: #1A1A1A; min-height: 190px;"><span style="width: 84px; height: 84px; border-radius: 22px; background: #D4B95E; color: #FFFFFF; display: flex; align-items: center; justify-content: center;"><svg aria-hidden="true" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0zM17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/></svg></span><span style="font-weight: 700; font-size: 17px;">Leaderboard</span></a>
+        <a href="SchoolCauses.html" style="background: #FFFFFF; border: 1px solid #E0DCCD; border-radius: 24px; box-sizing: border-box; padding: 26px 18px; display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center; text-decoration: none; color: #1A1A1A; min-height: 190px;"><span style="width: 84px; height: 84px; border-radius: 22px; background: #C78B7B; color: #FFFFFF; display: flex; align-items: center; justify-content: center;"><svg aria-hidden="true" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-8-5-8-11a4.5 4.5 0 0 1 8-3 4.5 4.5 0 0 1 8 3c0 6-8 11-8 11z"/></svg></span><span style="font-weight: 700; font-size: 17px;">Hours by cause</span></a>
+        <a href="SchoolPartners.html" style="background: #FFFFFF; border: 1px solid #E0DCCD; border-radius: 24px; box-sizing: border-box; padding: 26px 18px; display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center; text-decoration: none; color: #1A1A1A; min-height: 190px;"><span style="width: 84px; height: 84px; border-radius: 22px; background: #D4AA72; color: #FFFFFF; display: flex; align-items: center; justify-content: center;"><svg aria-hidden="true" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg></span><span style="font-weight: 700; font-size: 17px;">Top partners</span></a>
+        <a href="SchoolReports.html" style="background: #FFFFFF; border: 1px solid #E0DCCD; border-radius: 24px; box-sizing: border-box; padding: 26px 18px; display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center; text-decoration: none; color: #1A1A1A; min-height: 190px;"><span style="width: 84px; height: 84px; border-radius: 22px; background: #94A3DE; color: #FFFFFF; display: flex; align-items: center; justify-content: center;"><svg aria-hidden="true" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v16h16"/><path d="m7 15 4-4 3 3 5-6"/></svg></span><span style="font-weight: 700; font-size: 17px;">Hours over time</span></a>
+        <a href="SchoolChallenge.html" style="background: #FFFFFF; border: 1px solid #E0DCCD; border-radius: 24px; box-sizing: border-box; padding: 26px 18px; display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center; text-decoration: none; color: #1A1A1A; min-height: 190px;"><span style="width: 84px; height: 84px; border-radius: 22px; background: #7FAA7E; color: #FFFFFF; display: flex; align-items: center; justify-content: center;"><svg aria-hidden="true" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></span><span style="font-weight: 700; font-size: 17px;">Create a challenge</span></a>
+      </div>
+    </section>
+  </main>
+
+</div>
+</template>
+<script type="text/x-dc" id="dc-logic">
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { major: 'all' };
+  }
+  renderVals() {
+    var self = this;
+    var data = {
+      all: { label: 'All majors', students: '946', hours: '12,838', courses: '49', partners: '22' },
+      nursing: { label: 'Nursing', students: '231', hours: '2,964', courses: '9', partners: '11' },
+      business: { label: 'Business', students: '204', hours: '2,118', courses: '7', partners: '9' },
+      education: { label: 'Education', students: '158', hours: '2,402', courses: '8', partners: '10' },
+      biology: { label: 'Biology', students: '126', hours: '1,560', courses: '6', partners: '8' },
+      psychology: { label: 'Psychology', students: '112', hours: '1,377', courses: '6', partners: '9' },
+      engineering: { label: 'Engineering', students: '81', hours: '820', courses: '4', partners: '6' }
+    };
+    var ids = ['all', 'nursing', 'business', 'education', 'biology', 'psychology', 'engineering'];
+    var tile = function (bg) { return 'width: 84px; height: 84px; border-radius: 22px; background: ' + bg + '; color: #FFFFFF; display: flex; align-items: center; justify-content: center;'; };
+    var s = data[this.state.major];
+    return {
+      major: this.state.major,
+      majors: ids.map(function (id) { return { id: id, label: data[id].label }; }),
+      showing: this.state.major === 'all' ? 'every major' : s.label + ' students only',
+      s: s,
+      pickMajor: function (e) { self.setState({ major: e.target.value }); },
+      explore: [
+        { label: 'Student stories', href: 'SchoolStudents.html', tile: tile('#A8577E'), path: 'M4 8h3l2-3h6l2 3h3v11H4z M12 9.5a3.5 3.5 0 1 0 0 7a3.5 3.5 0 1 0 0-7' },
+        { label: 'Students by major', href: 'SchoolReports.html', tile: tile('#7B5BA6'), path: 'M9 4a4 4 0 1 0 0 8a4 4 0 1 0 0-8 M2 21c0-4 3-6 7-6s7 2 7 6 M17 4a4 4 0 0 1 0 8 M22 21c0-3-2-5-4-5.5' },
+        { label: 'Hours by month', href: 'SchoolReports.html', tile: tile('#8E5A3B'), path: 'M4 20V10 M10 20V4 M16 20v-7 M22 20H2' },
+        { label: 'Top partners', href: 'SchoolPartners.html', tile: tile('#471C72'), path: 'M12 21s-8-5-8-11a4.5 4.5 0 0 1 8-3a4.5 4.5 0 0 1 8 3c0 6-8 11-8 11z' }
+      ]
+    };
+  }
+}
+</script>
+
+</body>
+</html>
