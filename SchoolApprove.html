@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Approve hours · Samaky for Schools</title>
+<link rel="icon" href="brand/maky.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&amp;family=Poppins:wght@400;500;600;700&amp;display=swap">
+<style>
+body{margin:0;background:#FAF9F5}
+a{color:#471C72}a:hover{color:#2E1149}
+</style>
+<script src="dc-lite.js"></script>
+</head>
+<body>
+<div id="dc-root"></div>
+<template id="dc-template">
+<div style="min-height: 100vh; display: flex; flex-wrap: wrap; align-items: stretch; background: #FAF9F5; font-family: 'Poppins', system-ui, sans-serif; color: #1A1A1A;">
+
+  <nav aria-label="Main" style="flex: 1 1 248px; box-sizing: border-box; background: #471C72; color: #FFFFFF; padding: 28px 18px; display: flex; flex-direction: column; gap: 4px;">
+    <a href="index.html" style="display: block; padding: 0 10px 18px;"><img src="brand/samaky-logo-dark.svg" alt="Samaky, Catalyze Kindness" style="display: block; width: 190px; height: auto;"></a>
+    <div style="margin: 0 2px 16px; padding: 14px; border-radius: 16px; background: #5B2E88; display: flex; align-items: center; gap: 12px;">
+      <img src="brand/ust-shield.png" alt="University of St. Thomas shield" style="width: 48px; height: 48px; flex: 0 0 48px; border-radius: 12px; border: 0; box-sizing: border-box; background: #FFFFFF; object-fit: contain; display: block;">
+      <div style="min-width: 0; line-height: 1.35;"><div style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px;"><span style="font-weight: 600; font-size: 15px; color: #FAF9F5;">University of St. Thomas</span><span style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; border-radius: 999px; padding: 2px 8px; background: #F3E6DC; color: #7A4A21;">Demo</span></div><div style="font-size: 12px; color: #E3D7F0; margin-top: 2px;">Service Learning Office · Fall 2026</div></div>
+    </div>
+    <div style="font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: #D9CCE8; padding: 0 12px 6px;">Overview</div>
+    <a href="index.html" style="display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 0 12px; border-radius: 12px; text-decoration: none; font-size: 15px; color: #FFFFFF;"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>Home</a>
+    <a href="SchoolCalendar.html" style="display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 0 12px; border-radius: 12px; text-decoration: none; font-size: 15px; color: #FFFFFF;"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4M16 2v4M3 10h18M8 14h2M14 14h2M8 17h2"/></svg>Calendar</a>
+    <a href="SchoolEvents.html" style="display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 0 12px; border-radius: 12px; text-decoration: none; font-size: 15px; color: #FFFFFF;"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4M5 4h11l-2 4 2 4H5"/></svg>Our events</a>
+    <a href="SchoolReports.html" style="display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 0 12px; border-radius: 12px; text-decoration: none; font-size: 15px; color: #FFFFFF;"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>Reports</a>
+    <div style="font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: #D9CCE8; padding: 18px 12px 6px;">Review</div>
+    <a href="SchoolApprove.html" aria-current="page" style="display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 0 12px; border-radius: 12px; text-decoration: none; font-size: 15px; background: #FFFFFF; color: #471C72; font-weight: 700;"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>Approve hours<span style="margin-left: auto; background: #B97F5B; color: #1A1A1A; font-size: 12px; font-weight: 700; border-radius: 999px; padding: 2px 8px;">6</span></a>
+    <a href="SchoolExpenses.html" style="display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 0 12px; border-radius: 12px; text-decoration: none; font-size: 15px; color: #FFFFFF;"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h12v20l-3-2-3 2-3-2-3 2z"/><path d="M9 7h6M9 11h6M9 15h4"/></svg>Expenses<span style="margin-left: auto; background: #B97F5B; color: #1A1A1A; font-size: 12px; font-weight: 700; border-radius: 999px; padding: 2px 8px;">3</span></a>
+    <a href="SchoolReflections.html" style="display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 0 12px; border-radius: 12px; text-decoration: none; font-size: 15px; color: #FFFFFF;"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9h8M8 12h5"/></svg>Reflections<span style="margin-left: auto; background: #B97F5B; color: #1A1A1A; font-size: 12px; font-weight: 700; border-radius: 999px; padding: 2px 8px;">6</span></a>
+    <a href="SchoolTranscripts.html" style="display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 0 12px; border-radius: 12px; text-decoration: none; font-size: 15px; color: #FFFFFF;"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></svg>Transcripts</a>
+    <div style="font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: #D9CCE8; padding: 18px 12px 6px;">Students and courses</div>
+    <a href="SchoolStudents.html" style="display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 0 12px; border-radius: 12px; text-decoration: none; font-size: 15px; color: #FFFFFF;"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="4"/><path d="M2 21c0-4 3-6 7-6s7 2 7 6M17 4a4 4 0 0 1 0 8M22 21c0-3-2-5-4-5.5"/></svg>Students</a>
+    <a href="SchoolPrograms.html" style="display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 0 12px; border-radius: 12px; text-decoration: none; font-size: 15px; color: #FFFFFF;"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 9 5-9 5-9-5z"/><path d="m3 13 9 5 9-5"/></svg>Programs</a>
+    <a href="SchoolCourses.html" style="display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 0 12px; border-radius: 12px; text-decoration: none; font-size: 15px; color: #FFFFFF;"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h6a3 3 0 0 1 3 3v14a2 2 0 0 0-2-2H4zM20 4h-6a3 3 0 0 0-3 3v14a2 2 0 0 1 2-2h7z"/></svg>Community courses</a>
+    <a href="SchoolPartners.html" style="display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 0 12px; border-radius: 12px; text-decoration: none; font-size: 15px; color: #FFFFFF;"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-8-5-8-11a4.5 4.5 0 0 1 8-3 4.5 4.5 0 0 1 8 3c0 6-8 11-8 11z"/></svg>Community partners</a>
+    <div style="font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: #D9CCE8; padding: 18px 12px 6px;">Setup</div>
+    <a href="SchoolCanvas.html" style="display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 0 12px; border-radius: 12px; text-decoration: none; font-size: 15px; color: #FFFFFF;"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>Connect Canvas</a>
+    <a href="SchoolProfile.html" style="display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 0 12px; border-radius: 12px; text-decoration: none; font-size: 15px; color: #FFFFFF;"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V6l8-3 8 3v15M9 21v-5h6v5M9 9h.01M15 9h.01M9 13h.01M15 13h.01"/></svg>Office profile and team</a>
+    <a href="SchoolMaky.html" style="display: flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 14px 0 8px; margin-top: auto; border-radius: 14px; background: #FAF9F5; color: #1A1A1A; text-decoration: none; font-weight: 600; font-size: 15px;"><img src="brand/maky.png" alt="" style="width: 34px; height: 34px; border-radius: 999px; object-fit: cover; background: #FAF9F5;">Ask Maky</a>
+    <div style="height: 8px;"></div>
+  </nav>
+
+  <main style="flex: 999 1 560px; min-width: 0; box-sizing: border-box; padding: 28px clamp(16px, 3vw, 40px) 48px; display: flex; flex-direction: column; gap: 24px;">    <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 18px;">
+      <div style="flex: 1 1 420px;">
+        <h1 style="margin: 0; font-family: 'Fraunces', Georgia, serif; font-size: clamp(32px, 3.6vw, 44px); line-height: 1.05; letter-spacing: -1px;">Approve hours</h1>
+        <p style="margin: 10px 0 0; font-size: 16px; line-height: 1.5; color: #5E5B53; max-width: 640px;">Nonprofits verify the hours. You decide what counts for credit.</p>
+      </div>
+      <button type="button" onClick="{{approveAll}}" disabled="{{noneLeft}}" style="{{allStyle}}"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg>Approve all</button>
+    </div>
+
+    <div style="display: inline-flex; flex-wrap: wrap; gap: 6px; background: #E5E1D3; border-radius: 999px; padding: 6px; align-self: flex-start;">
+      <span style="min-height: 40px; display: inline-flex; align-items: center; padding: 0 18px; border-radius: 999px; background: #FFFFFF; font-weight: 700; font-size: 14px;">Waiting · {{pendingCount}}</span>
+      <span style="min-height: 40px; display: inline-flex; align-items: center; padding: 0 18px; font-size: 14px;">Approved · {{okCount}}</span>
+      <span style="min-height: 40px; display: inline-flex; align-items: center; padding: 0 18px; font-size: 14px;">Denied · {{noCount}}</span>
+    </div>
+
+    <div style="display: flex; flex-wrap: wrap; gap: 18px; align-items: flex-start;">
+      <section style="flex: 3 1 560px; min-width: 0; background: #FFFFFF; border: 1px solid #E0DCCD; border-radius: 24px; box-sizing: border-box; padding: 8px 24px;">
+        <sc-for list="{{rows}}" as="r" hint-placeholder-count="6">
+          <div style="{{r.rowStyle}}">
+            <div aria-hidden="true" style="width: 44px; height: 44px; flex: 0 0 44px; border-radius: 999px; background: #F9F6FC; color: #471C72; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px;">{{r.ini}}</div>
+            <div style="flex: 1 1 260px; min-width: 0;">
+              <div style="font-weight: 700; font-size: 17px;">{{r.name}}</div>
+              <div style="font-size: 14px; color: #5E5B53; margin-top: 2px;">{{r.service}} · {{r.org}} · {{r.date}}</div>
+              <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px; font-size: 13px; color: #5E5B53; margin-top: 6px;"><span style="color: #2F6B3A; display: inline-flex;"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span>Verified by the nonprofit · Counts toward {{r.course}}</div>
+            </div>
+            <div style="flex: 0 0 auto; text-align: right; min-width: 64px;"><span style="font-family: 'Fraunces', Georgia, serif; font-weight: 700; font-size: 28px;">{{r.hrs}}</span><span style="font-size: 13px; color: #5E5B53;"> hrs</span></div>
+            <div style="flex: 1 1 100%; display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 10px; padding-left: 60px;">
+              <span style="{{r.tagStyle}}">{{r.tag}}</span>
+              <sc-if value="{{r.pending}}" hint-placeholder-val="{{true}}">
+                <button type="button" onClick="{{r.approve}}" style="display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 0 22px; border-radius: 999px; font: inherit; font-weight: 700; font-size: 15px; cursor: pointer; text-decoration: none; box-sizing: border-box; border: 0; background: #471C72; color: #FFFFFF; min-width: 140px;">Approve</button>
+                <button type="button" onClick="{{r.deny}}" style="display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 0 22px; border-radius: 999px; font: inherit; font-weight: 700; font-size: 15px; cursor: pointer; text-decoration: none; box-sizing: border-box; border: 2px solid #471C72; background: #FFFFFF; color: #471C72;">Deny</button>
+              </sc-if>
+              <sc-if value="{{r.done}}" hint-placeholder-val="{{false}}">
+                <button type="button" onClick="{{r.undo}}" style="min-height: 44px; padding: 0 16px; border-radius: 999px; border: 1.5px solid #E0DCCD; background: #FFFFFF; font: inherit; font-size: 14px; font-weight: 700; color: #1A1A1A; cursor: pointer;">Undo</button>
+              </sc-if>
+            </div>
+          </div>
+        </sc-for>
+      </section>
+
+      <aside style="flex: 2 1 300px; min-width: 0; display: flex; flex-direction: column; gap: 18px;">
+        <section style="background: #F9F6FC; border: 1.5px solid #471C72; border-radius: 24px; padding: 22px; box-sizing: border-box;">
+          <div style="font-size: 14px; color: #5E5B53;">Waiting for your office</div>
+          <div style="font-family: 'Fraunces', Georgia, serif; font-weight: 700; font-size: 44px; color: #471C72; line-height: 1.1; margin-top: 4px;">{{pendingHrs}} hrs</div>
+          <div style="font-size: 14px; color: #5E5B53;">from {{pendingCount}} entries</div>
+        </section>
+        <section style="background: #FFFFFF; border: 1px solid #E0DCCD; border-radius: 24px; box-sizing: border-box; padding: 22px;">
+          <h2 style="margin: 0 0 12px; font-family: 'Fraunces', Georgia, serif; font-size: 22px;">How approval works</h2>
+          <ol style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 10px; font-size: 15px; line-height: 1.45;">
+            <li>A student checks in and serves at a nonprofit.</li>
+            <li>The nonprofit confirms the hours on Samaky.</li>
+            <li>Your office decides if they count for credit. Only approved hours go on the transcript.</li>
+          </ol>
+          <a href="SchoolTranscripts.html" style="display: inline-block; margin-top: 14px; font-weight: 700; font-size: 14px;">See transcripts</a>
+        </section>
+      </aside>
+    </div>
+  </main>
+
+</div>
+</template>
+<script type="text/x-dc" id="dc-logic">
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { st: {} };
+  }
+  setOne(id, v) {
+    var st = Object.assign({}, this.state.st);
+    if (v) { st[id] = v; } else { delete st[id]; }
+    this.setState({ st: st });
+  }
+  renderVals() {
+    var self = this;
+    var st = this.state.st;
+    var defs = [
+      { id: 'a', ini: 'AT', name: 'Ava Thompson', service: 'Blood drive greeter', org: 'North Star Blood Center', date: 'Oct 3', hrs: 3, course: 'NURS 210' },
+      { id: 'b', ini: 'NK', name: 'Noah Kim', service: 'Tech help Tuesdays', org: 'Eastside Senior Commons', date: 'Oct 6', hrs: 2, course: 'ENGR 120' },
+      { id: 'c', ini: 'MV', name: 'Mai Vang', service: 'Pack meals for families', org: 'Northside Food Shelf', date: 'Oct 10', hrs: 3, course: 'BIOL 207' },
+      { id: 'd', ini: 'DO', name: 'Daniel Ortiz', service: 'Reading buddies', org: 'Riverbend Literacy Project', date: 'Oct 14', hrs: 1.5, course: 'EDUC 305' },
+      { id: 'e', ini: 'SR', name: 'Sofia Ramirez', service: 'Dog walking crew', org: 'Lakeview Animal Rescue', date: 'Oct 17', hrs: 2, course: 'PSYC 310' },
+      { id: 'f', ini: 'LB', name: 'Lucas Berg', service: 'River cleanup', org: 'Green Corridor Cleanup', date: 'Oct 18', hrs: 4, course: 'BUSN 200' }
+    ];
+    var tag = 'font-size: 13px; font-weight: 700; border-radius: 999px; padding: 6px 14px; ';
+    var pend = 0, pendHrs = 0, ok = 0, no = 0;
+    var rows = defs.map(function (d) {
+      var s = st[d.id];
+      if (s === 'ok') { ok++; } else if (s === 'no') { no++; } else { pend++; pendHrs += d.hrs; }
+      return Object.assign({}, d, {
+        pending: !s, done: !!s,
+        tag: s === 'ok' ? 'Approved for credit' : (s === 'no' ? 'Denied' : 'Waiting for approval'),
+        tagStyle: tag + (s === 'ok' ? 'background: #F9F6FC; color: #471C72; border: 1px solid #471C72;' : (s === 'no' ? 'background: #E5E1D3; color: #5E5B53;' : 'background: #F3E6DC; color: #7A4A21;')),
+        rowStyle: 'display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; padding: 18px 0; border-top: 1px solid #E5E1D3;' + (s ? ' opacity: 0.85;' : ''),
+        approve: function () { self.setOne(d.id, 'ok'); },
+        deny: function () { self.setOne(d.id, 'no'); },
+        undo: function () { self.setOne(d.id, null); }
+      });
+    });
+    rows[0].rowStyle = rows[0].rowStyle.replace('border-top: 1px solid #E5E1D3;', '');
+    var base = 'display: inline-flex; align-items: center; gap: 10px; min-height: 52px; padding: 0 24px; border-radius: 999px; border: 0; font: inherit; font-weight: 700; font-size: 16px; ';
+    return {
+      rows: rows,
+      pendingCount: pend, okCount: ok, noCount: no,
+      pendingHrs: pendHrs,
+      noneLeft: pend === 0,
+      allStyle: base + (pend === 0 ? 'background: #E5E1D3; color: #5E5B53; cursor: default;' : 'background: #471C72; color: #FFFFFF; cursor: pointer;'),
+      approveAll: function () {
+        var s2 = Object.assign({}, self.state.st);
+        defs.forEach(function (d) { if (!s2[d.id]) { s2[d.id] = 'ok'; } });
+        self.setState({ st: s2 });
+      }
+    };
+  }
+}
+</script>
+
+</body>
+</html>
