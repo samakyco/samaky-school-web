@@ -6,26 +6,84 @@
 <title>Samaky for Schools</title>
 <link rel="icon" href="brand/maky.png">
 <style>
-html,body{margin:0;height:100%;background:#FAF9F5}
-iframe{position:fixed;inset:0;width:100%;height:100%;border:0;display:block}
+html,body{margin:0;height:100%;background:#FAF9F5;overflow:hidden}
+iframe{position:fixed;inset:0;width:100%;height:100%;border:0;display:block;background:#FAF9F5;visibility:hidden}
+iframe.on{visibility:visible;z-index:2}
 </style>
 </head>
 <body>
-<iframe id="app" title="Samaky for Schools"></iframe>
+<iframe id="a" title="Samaky for Schools"></iframe>
+<iframe id="b" title="Samaky for Schools" aria-hidden="true"></iframe>
 <script>
 (function () {
-  // Every screen opens inside this frame, so the address bar always shows just the domain.
-  var frame = document.getElementById('app');
+  // Two frames take turns: the next screen loads out of sight and only appears
+  // once it is fully drawn, so switching screens never flashes a blank page.
+  // The address bar always stays on the bare domain.
+  var frames = [document.getElementById('a'), document.getElementById('b')];
+  var active = -1, loading = 0;
+  var PAGE = /^[A-Za-z0-9_-]+\.html$/;
+
+  function hook(frame) {
+    var doc = frame.contentDocument;
+    if (!doc || doc.__samakyHooked) return;
+    doc.__samakyHooked = true;
+    doc.addEventListener('click', function (e) {
+      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      var a = e.target.closest && e.target.closest('a[href]');
+      if (!a || a.target) return;
+      var href = a.getAttribute('href').split('#')[0];
+      if (!PAGE.test(href)) return;
+      e.preventDefault();
+      show(href, true);
+    }, true);
+  }
+
+  function reveal(i) {
+    var next = frames[i];
+    next.classList.add('on');
+    next.removeAttribute('aria-hidden');
+    if (active > -1 && active !== i) {
+      frames[active].classList.remove('on');
+      frames[active].setAttribute('aria-hidden', 'true');
+    }
+    active = i;
+    try { document.title = next.contentDocument.title || document.title; } catch (e) {}
+  }
+
+  function show(page, push) {
+    var i = active === 0 ? 1 : 0;
+    var next = frames[i];
+    var ticket = ++loading;
+    if (push) { history.pushState({ p: page }, '', '/'); }
+    next.onload = function () {
+      if (ticket !== loading) return;
+      hook(next);
+      var win = next.contentWindow, doc = next.contentDocument;
+      var fonts = (doc.fonts && doc.fonts.ready) ? doc.fonts.ready : Promise.resolve();
+      var timer = new Promise(function (r) { setTimeout(r, 700); });
+      Promise.race([fonts, timer]).then(function () {
+        win.requestAnimationFrame(function () {
+          win.requestAnimationFrame(function () { if (ticket === loading) reveal(i); });
+        });
+      });
+    };
+    // replace() keeps the hidden frame out of the Back-button history
+    try { next.contentWindow.location.replace(page); } catch (e) { next.src = page; }
+  }
+
+  window.addEventListener('popstate', function (e) {
+    var p = e.state && e.state.p;
+    if (p && PAGE.test(p)) show(p, false);
+  });
+
   var start = 'SchoolHome.html';
   try {
     var saved = sessionStorage.getItem('samaky-start');
     sessionStorage.removeItem('samaky-start');
-    if (saved && /^[A-Za-z0-9_-]+\.html$/.test(saved)) { start = saved; }
+    if (saved && PAGE.test(saved)) start = saved;
   } catch (e) {}
-  frame.src = start;
-  frame.addEventListener('load', function () {
-    try { if (frame.contentDocument.title) { document.title = frame.contentDocument.title; } } catch (e) {}
-  });
+  history.replaceState({ p: start }, '', '/');
+  show(start, false);
 })();
 </script>
 </body>
