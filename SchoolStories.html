@@ -59,7 +59,7 @@ a{color:#471C72}a:hover{color:#2E1149}
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px;">
       <sc-for list="{{stories}}" as="s" hint-placeholder-count="6">
         <article style="background: #FFFFFF; border: 1px solid #E0DCCD; border-radius: 24px; box-sizing: border-box; overflow: hidden; display: flex; flex-direction: column;">
-          <div style="height: 150px; background: {{s.tint}}; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; color: #5E5B53; font-size: 13px;"><svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg><span>[Student photo]</span></div>
+          <img src="{{s.img}}" alt="{{s.alt}}" loading="lazy" style="display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; background: #E5E1D3;">
           <div style="padding: 20px; display: flex; flex-direction: column; gap: 12px; flex: 1 1 auto;">
             <p style="margin: 0; font-family: 'Fraunces', Georgia, serif; font-size: 19px; line-height: 1.4;">“{{s.quote}}”</p>
             <div style="font-size: 14px; color: #5E5B53; margin-top: auto;"><span style="font-weight: 700; color: #1A1A1A;">{{s.name}}</span> · {{s.major}}<br>{{s.where}}</div>
@@ -79,17 +79,17 @@ class Component extends DCLogic {
   renderVals() {
     var self = this;
     var d = [
-      ['a', 'Ava Thompson', 'Nursing', 'North Star Blood Center', 'Walking first-time donors through each step felt like the patient teaching we practiced in class.', '#F4E7EE'],
-      ['b', 'Noah Kim', 'Engineering', 'Eastside Senior Commons', 'If a button keeps moving, people stop trusting it. Our design unit finally felt real.', '#EEE8F6'],
-      ['c', 'Mai Vang', 'Biology', 'Northside Food Shelf', 'Most families who come in are working but still come up short. That changed how I see food shelves.', '#E8F1EE'],
-      ['d', 'Daniel Ortiz', 'Education', 'Riverbend Literacy Project', 'My reading buddy read two full pages about sharks without stopping. Choice matters.', '#F6F0DC'],
-      ['e', 'Lucas Berg', 'Business', 'Green Corridor Cleanup', 'Thirty bags from one stretch of river, mostly packaging. Now it is our class project.', '#F4E9E5'],
-      ['f', 'Grace Lee', 'Nursing', 'Eastside Senior Commons', 'One resident remembered my name the second week. That is why I keep coming back.', '#E9ECF8']
+      ['c', 'Mai Vang', 'Biology', 'Northside Food Shelf', 'We sorted donations outside all morning. Most families who come in are working but still come up short. That changed how I see food shelves.', 'mai', 'Volunteers in yellow vests sorting donations into boxes outdoors'],
+      ['s', 'Sofia Ramirez', 'Psychology', 'Lakeview Youth Soccer', 'Our team lost 4 to 1 and the kids still celebrated like they won the World Cup. They taught me more about joy than any lecture.', 'sofia', 'Four young people in soccer jerseys laughing under a colorful blanket'],
+      ['d', 'Daniel Ortiz', 'Education', 'Riverbend Literacy Project', 'We start every tutoring night with a huddle. By week three, the kids were the ones leading it.', 'daniel', 'A circle of people stacking their hands together, seen from above'],
+      ['e', 'Lucas Berg', 'Business', 'Green Corridor Cleanup', 'Thirty bags from one stretch of the city, mostly packaging. Now it is our class project.', 'lucas', 'Three volunteers in purple vests walking down a street with a cart of collection bags'],
+      ['a', 'Ava Thompson', 'Nursing', 'Northside Food Shelf', 'Ruth has run the bread table for nine years. She taught me to greet every guest by name, which is basically good bedside manner.', 'ava', 'A smiling volunteer in a purple vest standing behind a table of bread'],
+      ['b', 'Noah Kim', 'Engineering', 'Eastside Senior Commons', 'We packed 40 holiday boxes for residents. I redrew our packing line on a whiteboard and we finished an hour early.', 'noah', 'Rows of cardboard boxes filled with groceries, bread and tomatoes']
     ];
     var b = 'min-height: 44px; padding: 0 18px; border-radius: 999px; font: inherit; font-size: 14px; font-weight: 700; cursor: pointer; align-self: flex-start; ';
     return { stories: d.map(function (s) {
       var on = !!self.state.added[s[0]];
-      return { name: s[1], major: s[2], where: s[3], quote: s[4], tint: s[5],
+      return { name: s[1], major: s[2], where: s[3], quote: s[4], img: 'brand/stories/' + s[5] + '.jpg', alt: s[6],
         btn: on ? 'Added to board summary' : 'Add to a report',
         btnStyle: b + (on ? 'border: 1.5px solid #471C72; background: #F9F6FC; color: #471C72;' : 'border: 1.5px solid #471C72; background: #FFFFFF; color: #471C72;'),
         add: function () { var a = Object.assign({}, self.state.added); if (a[s[0]]) { delete a[s[0]]; } else { a[s[0]] = 1; } self.setState({ added: a }); } };
