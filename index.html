@@ -5,23 +5,81 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Samaky for Schools</title>
 <link rel="icon" href="brand/maky.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&amp;family=Poppins:wght@400;500;600;700&amp;display=swap">
 <style>
-html,body{margin:0;height:100%;background:#FAF9F5;overflow:hidden}
-iframe{position:fixed;inset:0;width:100%;height:100%;border:0;display:block;background:#FAF9F5;visibility:hidden}
-iframe.on{visibility:visible;z-index:2}
+:root{--accent:#471C72;--accent-soft:#F9F6FC;--ink:#1A1A1A;--muted:#5E5B53;--line:#E5E1D3;--cream:#FAF9F5}
+html,body{margin:0;height:100%;background:var(--cream);overflow:hidden;font-family:'Poppins',system-ui,sans-serif}
+iframe.screen{position:fixed;inset:0;width:100%;height:100%;border:0;display:block;background:var(--cream);visibility:hidden}
+iframe.screen.on{visibility:visible;z-index:2}
+/* floating Maky button */
+#maky-fab{position:fixed;right:24px;bottom:24px;z-index:20;width:68px;height:68px;border-radius:999px;border:3px solid #FFFFFF;padding:0;background:#3E8957;cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,.22);overflow:hidden;transition:transform .15s ease}
+#maky-fab:hover{transform:scale(1.05)}
+#maky-fab img{width:100%;height:100%;object-fit:cover;display:block}
+#maky-fab[hidden]{display:none}
+/* chat panel */
+#maky-panel{position:fixed;right:24px;bottom:108px;z-index:21;width:min(400px,calc(100vw - 32px));height:min(620px,calc(100vh - 140px));background:#FFFFFF;border-radius:24px;box-shadow:0 12px 40px rgba(0,0,0,.22);display:flex;flex-direction:column;overflow:hidden;color:var(--ink);transform-origin:bottom right;transition:opacity .18s ease,transform .18s ease}
+#maky-panel[hidden]{display:flex;opacity:0;transform:scale(.92) translateY(8px);pointer-events:none;visibility:hidden}
+.mk-head{display:flex;align-items:center;gap:12px;padding:16px 18px;border-bottom:1px solid var(--line)}
+.mk-head img{width:48px;height:48px;border-radius:999px;object-fit:cover}
+.mk-name{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:20px;line-height:1.1}
+.mk-sub{font-size:13px;color:var(--muted)}
+.mk-close{margin-left:auto;width:40px;height:40px;border-radius:999px;border:1.5px solid #E0DCCD;background:#FFFFFF;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--ink)}
+.mk-body{flex:1 1 auto;overflow-y:auto;padding:16px 18px;display:flex;flex-direction:column;gap:10px}
+.mk-row{display:flex;flex-direction:column;align-items:flex-start}
+.mk-row.me{align-items:flex-end}
+.mk-bub{max-width:88%;background:var(--cream);border-radius:18px 18px 18px 4px;padding:11px 14px;font-size:15px;line-height:1.5}
+.mk-row.me .mk-bub{background:var(--accent);color:#FFFFFF;border-radius:18px 18px 4px 18px}
+.mk-acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.mk-act{min-height:38px;padding:0 14px;border-radius:999px;font:inherit;font-size:13px;font-weight:700;cursor:pointer;border:2px solid var(--accent);background:#FFFFFF;color:var(--accent)}
+.mk-act.primary{background:var(--accent);color:#FFFFFF}
+.mk-dots{display:inline-flex;gap:4px;padding:14px 16px}
+.mk-dots i{width:7px;height:7px;border-radius:99px;background:#B9B3A8;animation:mkb 1s infinite}
+.mk-dots i:nth-child(2){animation-delay:.15s}.mk-dots i:nth-child(3){animation-delay:.3s}
+@keyframes mkb{0%,60%,100%{transform:translateY(0);opacity:.5}30%{transform:translateY(-4px);opacity:1}}
+.mk-foot{padding:12px 18px 16px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:10px}
+.mk-chips{display:flex;flex-wrap:wrap;gap:8px}
+.mk-chip{min-height:38px;padding:0 13px;border-radius:999px;border:1.5px solid var(--accent);background:#FFFFFF;font:inherit;font-size:13px;font-weight:600;color:var(--ink);cursor:pointer;text-align:left}
+.mk-form{display:flex;gap:8px}
+.mk-form input{flex:1 1 auto;min-width:0;min-height:46px;box-sizing:border-box;border:1.5px solid #E0DCCD;border-radius:999px;padding:0 16px;font:inherit;font-size:15px;color:var(--ink)}
+.mk-form button{width:46px;height:46px;flex:0 0 46px;border-radius:999px;border:0;background:var(--accent);color:#FFFFFF;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.mk-note{font-size:12px;color:var(--muted);line-height:1.4}
+.sr{position:absolute;left:-9999px}
+@media (max-width:520px){#maky-fab{right:16px;bottom:16px;width:60px;height:60px}#maky-panel{right:16px;bottom:88px;height:calc(100vh - 110px)}}
 </style>
 </head>
 <body>
-<iframe id="a" title="Samaky for Schools"></iframe>
-<iframe id="b" title="Samaky for Schools" aria-hidden="true"></iframe>
+<iframe class="screen" id="a" title="Samaky for Schools"></iframe>
+<iframe class="screen" id="b" title="Samaky for Schools" aria-hidden="true"></iframe>
+
+<button id="maky-fab" type="button" aria-label="Chat with Maky" aria-expanded="false" aria-controls="maky-panel"><img src="brand/maky.png" alt=""></button>
+<section id="maky-panel" role="dialog" aria-label="Maky chat" hidden>
+  <div class="mk-head">
+    <img src="brand/maky.png" alt="">
+    <div><div class="mk-name">Maky</div><div class="mk-sub">Your Capybara Guide</div></div>
+    <button class="mk-close" type="button" aria-label="Close chat"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+  </div>
+  <div class="mk-body" id="mk-body" aria-live="polite"></div>
+  <div class="mk-foot">
+    <div class="mk-chips" id="mk-chips"></div>
+    <form class="mk-form" id="mk-form">
+      <label for="mk-input" class="sr">Ask Maky</label>
+      <input id="mk-input" autocomplete="off" placeholder="Ask Maky about your students">
+      <button type="submit" aria-label="Send"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+    </form>
+    <div class="mk-note">Maky can remind and draft. Only your office approves credit.</div>
+  </div>
+</section>
+
 <script>
 (function () {
-  // Two frames take turns: the next screen loads out of sight and only appears
-  // once it is fully drawn, so switching screens never flashes a blank page.
-  // The address bar always stays on the bare domain.
+  var MAKY_PAGE = 'SchoolMaky.html';
+  var CHAT = {"hello": "Good morning, Tommie! I'm Maky. 6 entries are waiting for your approval, 3 expense requests need a look, and NURS 210 hours are due Friday. Where should we start?", "fallback": "I'm a demo version of Maky, so I can only help with a few things right now. Try one of the suggestions below!", "items": [{"id": "approve", "ask": "Who still needs approval?", "keys": ["approv", "credit", "waiting", "hours"], "answer": "Six entries are waiting, 15.5 hours in all, from Ava, Noah, Mai, Daniel, Sofia and Lucas. Each one was already verified by the nonprofit. Your office makes the final call.", "actions": [{"label": "Go approve", "page": "SchoolApprove.html"}]}, {"id": "behind", "ask": "Which majors are behind on hours?", "keys": ["behind", "major", "pace", "short"], "answer": "Nursing and Engineering are furthest behind. 38 Nursing students and 21 Engineering students have less than half their hours, and fall hours are due Dec 4.", "actions": [{"label": "See students", "page": "SchoolStudents.html"}, {"label": "See courses", "page": "SchoolCourses.html"}]}, {"id": "accred", "ask": "Make my accreditation report", "keys": ["report", "accredit", "board", "numbers"], "answer": "From Jan to Oct 2026: 9,412 verified hours from 712 students, across 49 community courses and 22 partners. 7,980 of those hours are approved for credit.", "actions": [{"label": "Open reports", "page": "SchoolReports.html"}]}, {"id": "remind", "ask": "Draft a reminder to students", "keys": ["remind", "message", "email", "draft", "nudge"], "answer": "Here is a draft: \"Hi! Fall service hours are due Dec 4. You can find open shifts on Samaky. Hours count once the nonprofit verifies them and our office approves them.\" It goes to the 59 students under half their hours, only after you send it.", "actions": [{"label": "Review recipients", "page": "SchoolStudents.html"}]}, {"id": "week", "ask": "What's coming up this week?", "keys": ["week", "calendar", "event", "coming", "deadline"], "answer": "The service fair is Wednesday, NURS 210 hours are due Friday, and the campus blood drive is next Thursday. 28 of 40 spots are filled for the blood drive.", "actions": [{"label": "Open calendar", "page": "SchoolCalendar.html"}, {"label": "Our events", "page": "SchoolEvents.html"}]}]};
+
+  // ---------- screens: two frames take turns so switching never flashes ----------
   var frames = [document.getElementById('a'), document.getElementById('b')];
-  var active = -1, loading = 0;
+  var active = -1, loading = 0, current = '';
   var PAGE = /^[A-Za-z0-9_-]+\.html$/;
+  var fab = document.getElementById('maky-fab');
 
   function hook(frame) {
     var doc = frame.contentDocument;
@@ -37,51 +95,106 @@ iframe.on{visibility:visible;z-index:2}
       show(href, true);
     }, true);
   }
-
+  function navScroll(frame) {
+    try { var n = frame.contentDocument.querySelector('.navlist'); return n ? n.scrollTop : 0; } catch (e) { return 0; }
+  }
+  function setNavScroll(frame, y) {
+    try { var n = frame.contentDocument.querySelector('.navlist'); if (n) n.scrollTop = y; } catch (e) {}
+  }
   function reveal(i) {
     var next = frames[i];
     next.classList.add('on');
     next.removeAttribute('aria-hidden');
-    if (active > -1 && active !== i) {
-      frames[active].classList.remove('on');
-      frames[active].setAttribute('aria-hidden', 'true');
-    }
+    if (active > -1 && active !== i) { frames[active].classList.remove('on'); frames[active].setAttribute('aria-hidden', 'true'); }
     active = i;
     try { document.title = next.contentDocument.title || document.title; } catch (e) {}
   }
-
   function show(page, push) {
-    var i = active === 0 ? 1 : 0;
-    var next = frames[i];
-    var ticket = ++loading;
-    if (push) { history.pushState({ p: page }, '', '/'); }
+    var i = active === 0 ? 1 : 0, next = frames[i], ticket = ++loading;
+    var keepY = active > -1 ? navScroll(frames[active]) : 0;
+    if (push) history.pushState({ p: page }, '', '/');
+    current = page;
+    fab.hidden = page === MAKY_PAGE;
+    if (fab.hidden) closePanel();
     next.onload = function () {
       if (ticket !== loading) return;
       hook(next);
       var win = next.contentWindow, doc = next.contentDocument;
       var fonts = (doc.fonts && doc.fonts.ready) ? doc.fonts.ready : Promise.resolve();
-      var timer = new Promise(function (r) { setTimeout(r, 700); });
-      Promise.race([fonts, timer]).then(function () {
+      Promise.race([fonts, new Promise(function (r) { setTimeout(r, 700); })]).then(function () {
         win.requestAnimationFrame(function () {
+          setNavScroll(next, keepY);   // the side menu stays where you left it
           win.requestAnimationFrame(function () { if (ticket === loading) reveal(i); });
         });
       });
     };
-    // replace() keeps the hidden frame out of the Back-button history
     try { next.contentWindow.location.replace(page); } catch (e) { next.src = page; }
   }
+  window.addEventListener('popstate', function (e) { var p = e.state && e.state.p; if (p && PAGE.test(p)) show(p, false); });
 
-  window.addEventListener('popstate', function (e) {
-    var p = e.state && e.state.p;
-    if (p && PAGE.test(p)) show(p, false);
+  // ---------- Maky chat demo ----------
+  var panel = document.getElementById('maky-panel'), body = document.getElementById('mk-body');
+  var chipsEl = document.getElementById('mk-chips'), form = document.getElementById('mk-form'), input = document.getElementById('mk-input');
+  var used = {}, started = false, busy = false;
+
+  function el(tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; }
+  function scrollDown() { body.scrollTop = body.scrollHeight; }
+  function say(text, me, actions) {
+    var row = el('div', 'mk-row' + (me ? ' me' : '')); row.appendChild(el('div', 'mk-bub', text));
+    if (actions && actions.length) {
+      var box = el('div', 'mk-acts');
+      actions.forEach(function (a, k) {
+        var b = el('button', 'mk-act' + (k === 0 ? ' primary' : ''), a.label); b.type = 'button';
+        b.addEventListener('click', function () { show(a.page, true); });
+        box.appendChild(b);
+      });
+      row.appendChild(box);
+    }
+    body.appendChild(row); scrollDown();
+  }
+  function reply(text, actions) {
+    busy = true; renderChips();
+    var row = el('div', 'mk-row'), dots = el('div', 'mk-bub mk-dots'); dots.innerHTML = '<i></i><i></i><i></i>';
+    row.appendChild(dots); body.appendChild(row); scrollDown();
+    setTimeout(function () { body.removeChild(row); say(text, false, actions); busy = false; renderChips(); }, 900 + Math.min(text.length * 6, 900));
+  }
+  function renderChips() {
+    chipsEl.innerHTML = '';
+    if (busy) return;
+    CHAT.items.filter(function (c) { return !used[c.id]; }).slice(0, 3).forEach(function (c) {
+      var b = el('button', 'mk-chip', c.ask); b.type = 'button';
+      b.addEventListener('click', function () { ask(c); });
+      chipsEl.appendChild(b);
+    });
+  }
+  function ask(c) { used[c.id] = true; say(c.ask, true); reply(c.answer, c.actions); }
+  function match(text) {
+    var t = text.toLowerCase(), best = null, score = 0;
+    CHAT.items.forEach(function (c) { var s = 0; c.keys.forEach(function (k) { if (t.indexOf(k) > -1) s++; }); if (s > score) { score = s; best = c; } });
+    return best;
+  }
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var text = input.value.trim(); if (!text || busy) return;
+    input.value = ''; say(text, true);
+    var c = match(text);
+    if (c) { used[c.id] = true; reply(c.answer, c.actions); }
+    else { reply(CHAT.fallback); }
   });
+  function openPanel() {
+    panel.hidden = false; fab.setAttribute('aria-expanded', 'true');
+    if (!started) { started = true; reply(CHAT.hello); }
+    setTimeout(function () { input.focus(); }, 200);
+  }
+  function closePanel() { panel.hidden = true; fab.setAttribute('aria-expanded', 'false'); }
+  fab.addEventListener('click', function () { panel.hidden ? openPanel() : closePanel(); });
+  panel.querySelector('.mk-close').addEventListener('click', closePanel);
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !panel.hidden) { closePanel(); fab.focus(); } });
+  renderChips();
 
+  // ---------- start ----------
   var start = 'SchoolHome.html';
-  try {
-    var saved = sessionStorage.getItem('samaky-start');
-    sessionStorage.removeItem('samaky-start');
-    if (saved && PAGE.test(saved)) start = saved;
-  } catch (e) {}
+  try { var saved = sessionStorage.getItem('samaky-start'); sessionStorage.removeItem('samaky-start'); if (saved && PAGE.test(saved)) start = saved; } catch (e) {}
   history.replaceState({ p: start }, '', '/');
   show(start, false);
 })();
