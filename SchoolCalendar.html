@@ -10,6 +10,7 @@
 <style>
 body{margin:0;background:#FAF9F5}
 @media (min-width: 820px){nav[aria-label="Main"]{position:sticky;top:0;align-self:flex-start;height:100vh;overflow:hidden}nav[aria-label="Main"] .navlist{flex:1 1 auto;min-height:0;overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.25) transparent;margin:0 -6px 12px;padding:0 6px}}
+@media (min-width: 820px){nav[aria-label="Main"]{flex:0 0 248px}html.nav-anim nav[aria-label="Main"]{transition:margin-left .25s ease}html.nav-anim main{transition:padding-left .25s ease}html.nav-collapsed nav[aria-label="Main"]{margin-left:-256px}html.nav-collapsed main{padding-left:76px !important}}
 a{color:#471C72}a:hover{color:#2E1149}
 </style>
 <script src="dc-lite.js"></script>
@@ -20,7 +21,7 @@ a{color:#471C72}a:hover{color:#2E1149}
 <div style="min-height: 100vh; display: flex; flex-wrap: wrap; align-items: stretch; background: #FAF9F5; font-family: 'Poppins', system-ui, sans-serif; color: #1A1A1A;">
 
   <nav aria-label="Main" style="flex: 1 1 248px; box-sizing: border-box; background: #471C72; color: #FFFFFF; padding: 28px 18px; display: flex; flex-direction: column; gap: 4px;">
-    <a href="SchoolHome.html" style="display: block; padding: 0 10px 18px;"><img src="brand/samaky-logo-dark.svg" alt="Samaky, Catalyze Kindness" style="display: block; width: 190px; height: auto;"></a>
+    <a href="SchoolHome.html" style="display: block; padding: 0 10px 18px;"><img src="brand/samaky-logo-dark.svg" alt="Samaky, Catalyze Kindness" style="display: block; width: 160px; height: auto;"></a>
     <div style="margin: 0 2px 16px; padding: 14px; border-radius: 16px; background: #5B2E88; display: flex; align-items: center; gap: 12px;">
       <img src="brand/ust-shield.png" alt="University of St. Thomas shield" style="width: 48px; height: 48px; flex: 0 0 48px; border-radius: 12px; border: 0; box-sizing: border-box; background: #FFFFFF; object-fit: contain; display: block;">
       <div style="min-width: 0; line-height: 1.35;"><div style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px;"><span style="font-weight: 600; font-size: 15px; color: #FAF9F5;">University of St. Thomas</span></div></div>
