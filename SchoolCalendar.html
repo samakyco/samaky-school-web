@@ -58,7 +58,7 @@ a{color:#471C72}a:hover{color:#2E1149}
   <main style="flex: 999 1 560px; min-width: 0; box-sizing: border-box; padding: 28px clamp(16px, 3vw, 40px) 48px; display: flex; flex-direction: column; gap: 24px;">    <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 18px;">
       <div style="flex: 1 1 420px;">
         <h1 style="margin: 0; font-family: 'Fraunces', Georgia, serif; font-size: clamp(32px, 3.6vw, 44px); line-height: 1.05; letter-spacing: -1px;">Calendar</h1>
-        <p style="margin: 10px 0 0; font-size: 16px; line-height: 1.5; color: #5E5B53; max-width: 640px;">Your office's service events and community course deadlines in one place. Turn on the Samaky Giving Calendar to see the dates that matter for giving and service.</p>
+        <p style="margin: 10px 0 0; font-size: 16px; line-height: 1.5; color: #5E5B53; max-width: 640px;">Your office's service events and community course deadlines in one place. Turn on the Giving Calendar to see the dates that matter for giving and service.</p>
       </div>
       <a href="SchoolCourses.html" style="display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 0 22px; border-radius: 999px; font: inherit; font-weight: 700; font-size: 15px; cursor: pointer; text-decoration: none; box-sizing: border-box; border: 0; background: #471C72; color: #FFFFFF; min-height: 52px;"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>Add a course deadline</a>
     </div>
@@ -71,7 +71,7 @@ a{color:#471C72}a:hover{color:#2E1149}
             <h2 style="margin: 0 6px; font-family: 'Fraunces', Georgia, serif; font-size: 26px;">November 2026</h2>
             <button type="button" aria-label="Next month" style="width: 44px; height: 44px; border-radius: 999px; border: 1.5px solid #E0DCCD; background: #FFFFFF; color: #1A1A1A; display: flex; align-items: center; justify-content: center; cursor: pointer;"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></button>
           </div>
-          <label style="display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 16px; border-radius: 999px; border: 1.5px solid #E0DCCD; background: #FFFFFF; font-size: 14px; font-weight: 700; cursor: pointer;"><input type="checkbox" checked="{{givingOn}}" onChange="{{toggleGiving}}" style="width: 20px; height: 20px; margin: 0; accent-color: #471C72; cursor: pointer;">Samaky Giving Calendar</label>
+          <label style="display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 16px; border-radius: 999px; border: 1.5px solid #E0DCCD; background: #FFFFFF; font-size: 14px; font-weight: 700; cursor: pointer;"><input type="checkbox" checked="{{givingOn}}" onChange="{{toggleGiving}}" style="width: 20px; height: 20px; margin: 0; accent-color: #471C72; cursor: pointer;">Giving Calendar</label>
         </div>
 
         <sc-if value="{{givingOn}}" hint-placeholder-val="{{true}}">
@@ -103,7 +103,7 @@ a{color:#471C72}a:hover{color:#2E1149}
         <div style="display: flex; flex-wrap: wrap; gap: 18px; margin-top: 16px; font-size: 13px; color: #5E5B53;">
           <span style="display: inline-flex; align-items: center; gap: 8px;"><span aria-hidden="true" style="width: 14px; height: 14px; border-radius: 4px; background: #471C72;"></span>Service event</span>
           <span style="display: inline-flex; align-items: center; gap: 8px;"><span aria-hidden="true" style="width: 14px; height: 14px; border-radius: 4px; background: #F9F6FC; border: 1.5px solid #471C72; box-sizing: border-box;"></span>Course deadline</span>
-          <span style="display: inline-flex; align-items: center; gap: 8px;"><span aria-hidden="true" style="width: 14px; height: 14px; border-radius: 4px; background: #B97F5B;"></span>Samaky Giving Calendar</span>
+          <span style="display: inline-flex; align-items: center; gap: 8px;"><span aria-hidden="true" style="width: 14px; height: 14px; border-radius: 4px; background: #B97F5B;"></span>Giving Calendar</span>
         </div>
       </section>
 
@@ -125,7 +125,7 @@ a{color:#471C72}a:hover{color:#2E1149}
         </section>
         <sc-if value="{{givingOn}}" hint-placeholder-val="{{true}}">
           <section style="background: #1A1A1A; color: #FAF9F5; border-radius: 24px; padding: 22px; box-sizing: border-box; display: flex; flex-direction: column; gap: 10px;">
-            <div style="font-size: 13px; font-weight: 700; color: #D9A27F; text-transform: uppercase; letter-spacing: 0.8px;">From the Samaky Giving Calendar</div>
+            <div style="font-size: 13px; font-weight: 700; color: #D9A27F; text-transform: uppercase; letter-spacing: 0.8px;">From the Giving Calendar</div>
             <div style="font-family: 'Fraunces', Georgia, serif; font-weight: 700; font-size: 24px; line-height: 1.15;">GivingTuesday is December 1, three days before fall hours are due.</div>
             <div style="font-size: 14px; color: #CFC9BD; line-height: 1.5;">A good week to nudge students who are short on hours toward open shifts.</div>
             <a href="SchoolMaky.html" style="display: inline-flex; align-items: center; justify-content: center; min-height: 48px; border-radius: 999px; background: #F9F6FC; color: #471C72; text-decoration: none; font-weight: 700; font-size: 15px; margin-top: 4px;">Draft a reminder with Maky</a>
@@ -181,11 +181,11 @@ class Component extends DCLogic {
       });
     }
     var all = [
-      { k: 'giving', mon: 'Nov', day: 3, title: 'Election Day', sub: 'Samaky Giving Calendar' },
+      { k: 'giving', mon: 'Nov', day: 3, title: 'Election Day', sub: 'Giving Calendar' },
       { k: 'event', mon: 'Nov', day: 4, title: 'Service fair', sub: 'Anderson Student Center · 14 partners' },
       { k: 'deadline', mon: 'Nov', day: 6, title: 'NURS 210 hours due', sub: 'Community Health · 64 students' },
       { k: 'event', mon: 'Nov', day: 12, title: 'Campus blood drive', sub: 'With North Star Blood Center' },
-      { k: 'giving', mon: 'Nov', day: 13, title: 'World Kindness Day', sub: 'Samaky Giving Calendar' },
+      { k: 'giving', mon: 'Nov', day: 13, title: 'World Kindness Day', sub: 'Giving Calendar' },
       { k: 'deadline', mon: 'Nov', day: 20, title: 'EDUC 305 reflections due', sub: 'Literacy in Schools · 28 students' }
     ];
     var bg = { event: 'background: #471C72; color: #FFFFFF;', deadline: 'background: #F9F6FC; color: #471C72; border: 1.5px solid #471C72;', giving: 'background: #B97F5B; color: #1A1A1A;' };
