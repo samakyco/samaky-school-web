@@ -176,7 +176,7 @@ a{color:#471C72}a:hover{color:#2E1149}
 class Component extends DCLogic {
   constructor(props) {
     super(props);
-    this.cfg = {"start": [{"kind": "one", "label": "@ava.thompson"}], "example": "@ava.thompson", "note": "Thank you for greeting every donor at the campus blood drive. You made St. Thomas proud.", "sig": "Rosa Delgado, Director, Service Learning Office", "accent": "#471C72", "keepColor": "#471C72", "logo": "brand/ust-shield.png", "logoLabel": "St. Thomas shield sticker", "fallbackDear": "Tommie"};
+    this.cfg = {"start": [], "example": "@ava.thompson", "note": "Thank you for greeting every donor at the campus blood drive. You made St. Thomas proud.", "sig": "Rosa Delgado, Director, Service Learning Office", "accent": "#471C72", "keepColor": "#471C72", "logo": "brand/ust-shield.png", "logoLabel": "St. Thomas shield sticker", "fallbackDear": "Tommie"};
     this.state = { recips: this.cfg.start.slice(), sticker: 'maky', open: false, kept: false, sent: false, drafted: false, err: '' };
     this.toText = '';
     this.note = this.cfg.note; this.sig = this.cfg.sig; this.settled = false;
@@ -238,7 +238,7 @@ class Component extends DCLogic {
           style: 'display: inline-flex; align-items: center; gap: 6px; min-height: 38px; padding: 0 6px 0 14px; border-radius: 999px; font-size: 14px; font-weight: 600; ' + (r.kind === 'file' ? 'background: #FFFFFF; color: #1A1A1A; border: 1.5px dashed ' + cfg.accent + ';' : 'background: ' + cfg.accent + '; color: #FFFFFF;'),
           remove: function () { var n = self.state.recips.slice(); n.splice(i, 1); self.setState({ recips: n, sent: false }); } };
       }),
-      toHelp: st.err || ('Type a username (like ' + cfg.example + ') or Samaky ID, then press Add. For a big group, upload a CSV or Excel file with one person per row.'),
+      toHelp: st.err || 'Type a username or Samaky ID, then press Add. For a big group, upload a CSV or Excel file with one person per row.',
       toHelpColor: st.err ? '#8E3B2E' : '#5E5B53',
       stickers: stDefs.map(function (d) {
         var on = d.id === st.sticker;
