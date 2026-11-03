@@ -86,6 +86,7 @@ body.nav-collapsed #nav-toggle svg{transform:scaleX(-1)}
   var frames = [document.getElementById('a'), document.getElementById('b')];
   var active = -1, loading = 0, current = '';
   var PAGE = /^[A-Za-z0-9_-]+\.html$/;
+  var VERSION = Date.now().toString(36);
   var fab = document.getElementById('maky-fab');
 
   function hook(frame) {
@@ -160,7 +161,9 @@ body.nav-collapsed #nav-toggle svg{transform:scaleX(-1)}
         });
       });
     };
-    try { next.contentWindow.location.replace(page); } catch (e) { next.src = page; }
+    // a fresh copy per visit, so updates show up right away instead of an old cached screen
+    var url = page + '?v=' + VERSION;
+    try { next.contentWindow.location.replace(url); } catch (e) { next.src = url; }
   }
   window.addEventListener('popstate', function (e) { var p = e.state && e.state.p; if (p && PAGE.test(p)) show(p, false); });
 
