@@ -22,6 +22,7 @@ a{color:#471C72}a:hover{color:#2E1149}
 .lt-up-anim{animation:lt-up .95s .38s cubic-bezier(.2,.8,.2,1) both}
 .lt-fade-anim{animation:lt-fade .35s ease-out both}
 .lt-env:hover .lt-env-body{transform:translateY(-3px) rotate(-.6deg)}
+.lt-to:focus-within,.lt-up:focus-within{outline:3px solid #5B6BE0;outline-offset:2px}
 .lt-env:focus-visible{outline:3px solid #1A1A1A;outline-offset:6px;border-radius:10px}
 </style>
 <script src="dc-lite.js"></script>
@@ -74,14 +75,28 @@ a{color:#471C72}a:hover{color:#2E1149}
 
     <div style="display: flex; flex-wrap: wrap; gap: 22px; align-items: flex-start;">
       <form onSubmit="{{noSubmit}}" style="flex: 3 1 420px; min-width: 0; background: #FFFFFF; border: 1.5px solid #E0DCCD; border-radius: 24px; padding: 26px; box-sizing: border-box; display: flex; flex-direction: column; gap: 20px;">
-        <fieldset style="border: 0; margin: 0; padding: 0;">
-          <legend style="font-weight: 600; font-size: 15px; padding: 0; margin-bottom: 10px;">Who is it for?</legend>
-          <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-            <sc-for list="{{whos}}" as="w" hint-placeholder-count="3">
-              <button type="button" onClick="{{w.pick}}" aria-pressed="{{w.on}}" style="{{w.style}}">{{w.label}}</button>
-            </sc-for>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <label for="to" style="font-weight: 600; font-size: 15px;">Who is it for?</label>
+          <div style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center;">
+            <div class="lt-to" style="flex: 1 1 280px; min-width: 0; display: flex; align-items: center; gap: 8px; border: 1.5px solid #E0DCCD; border-radius: 999px; padding: 5px 5px 5px 18px; background: #FFFFFF; box-sizing: border-box;">
+              <span aria-hidden="true" style="font-weight: 600; color: #5E5B53;">To:</span>
+              <input id="to" value="{{toText}}" onInput="{{setTo}}" onKeydown="{{toKey}}" placeholder="Username or Samaky ID" autocomplete="off" style="flex: 1 1 auto; min-width: 0; min-height: 40px; border: 0; outline: none; background: transparent; font: inherit; font-size: 16px; color: #1A1A1A;">
+              <button type="button" onClick="{{addTo}}" style="min-height: 42px; padding: 0 20px; border-radius: 999px; border: 0; background: #471C72; color: #FFFFFF; font: inherit; font-weight: 700; font-size: 15px; cursor: pointer;">Add</button>
+            </div>
+            <label class="lt-up" style="position: relative; display: inline-flex; align-items: center; gap: 8px; min-height: 54px; padding: 0 18px; border-radius: 999px; border: 1.5px solid #1A1A1A; background: #FFFFFF; font-weight: 600; font-size: 15px; cursor: pointer; box-sizing: border-box; white-space: nowrap;">
+              <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M7 9l5-5 5 5M4 20h16"/></svg>Upload CSV or Excel
+              <input type="file" accept=".csv,.xlsx,.xls,text/csv,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" onChange="{{upload}}" style="position: absolute; width: 1px; height: 1px; opacity: 0; overflow: hidden;">
+            </label>
           </div>
-        </fieldset>
+          <sc-if value="{{hasRecips}}" hint-placeholder-val="{{true}}">
+            <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+              <sc-for list="{{recips}}" as="r" hint-placeholder-count="2">
+                <span style="{{r.style}}"><sc-if value="{{r.isFile}}" hint-placeholder-val="{{false}}"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></sc-if>{{r.label}}<button type="button" onClick="{{r.remove}}" aria-label="Remove {{r.label}}" style="width: 26px; height: 26px; margin-left: 2px; border-radius: 999px; border: 0; background: transparent; color: inherit; font: inherit; font-size: 18px; line-height: 1; cursor: pointer;">×</button></span>
+              </sc-for>
+            </div>
+          </sc-if>
+          <div style="font-size: 13px; line-height: 1.5; color: {{toHelpColor}};">{{toHelp}}</div>
+        </div>
         <div style="display: flex; flex-direction: column; gap: 8px;">
           <label for="note" style="font-weight: 600; font-size: 15px;">Your note</label>
           <textarea id="note" rows="5" onInput="{{setNote}}" style="box-sizing: border-box; border: 1.5px solid #E0DCCD; border-radius: 14px; font: inherit; color: #1A1A1A; background: #FFFFFF; padding: 14px 16px; font-family: 'Caveat', 'Bradley Hand', cursive; font-size: 24px; line-height: 1.4; resize: vertical;">{{note}}</textarea>
@@ -161,8 +176,9 @@ a{color:#471C72}a:hover{color:#2E1149}
 class Component extends DCLogic {
   constructor(props) {
     super(props);
-    this.cfg = {"whos": [{"id": "event", "label": "Everyone from the blood drive (28)", "send": "Send 28 letters", "dear": "Ava", "sentMsg": "28 letters are on their way. Each one is addressed by name."}, {"id": "one", "label": "One student", "send": "Send letter", "dear": "Mai", "sentMsg": "Your letter to Mai is on its way."}, {"id": "club", "label": "A club", "send": "Send to club", "dear": "Pre-Health Society", "sentMsg": "Sent to all 56 members of Pre-Health Society."}, {"id": "program", "label": "A program (HEAL)", "send": "Send to HEAL", "dear": "HEAL volunteers", "sentMsg": "Sent to all 42 HEAL members."}], "note": "Thank you for greeting every donor at the campus blood drive. You made St. Thomas proud.", "sig": "Rosa Delgado, Director, Service Learning Office", "accent": "#471C72", "keepColor": "#471C72", "logo": "brand/ust-shield.png", "logoLabel": "St. Thomas shield sticker"};
-    this.state = { who: this.cfg.whos[0].id, sticker: 'maky', open: false, kept: false, sent: false, drafted: false };
+    this.cfg = {"start": [{"kind": "one", "label": "@ava.thompson"}], "example": "@ava.thompson", "note": "Thank you for greeting every donor at the campus blood drive. You made St. Thomas proud.", "sig": "Rosa Delgado, Director, Service Learning Office", "accent": "#471C72", "keepColor": "#471C72", "logo": "brand/ust-shield.png", "logoLabel": "St. Thomas shield sticker", "fallbackDear": "Tommie"};
+    this.state = { recips: this.cfg.start.slice(), sticker: 'maky', open: false, kept: false, sent: false, drafted: false, err: '' };
+    this.toText = '';
     this.note = this.cfg.note; this.sig = this.cfg.sig; this.settled = false;
   }
   renderVals() {
@@ -170,7 +186,25 @@ class Component extends DCLogic {
     var chip = function (on) {
       return 'min-height: 44px; padding: 0 16px; border-radius: 999px; font: inherit; font-size: 14px; font-weight: 600; cursor: pointer; ' + (on ? 'background: ' + cfg.accent + '; color: #FFFFFF; border: 1.5px solid ' + cfg.accent + ';' : 'background: #FFFFFF; color: #1A1A1A; border: 1.5px solid #E0DCCD;');
     };
-    var who = cfg.whos.filter(function (w) { return w.id === st.who; })[0];
+    var nameOf = function (raw) {
+      var t = String(raw).replace(/^@/, '').trim();
+      if (/\d/.test(t)) return cfg.fallbackDear;
+      t = t.split(/[._\s-]+/)[0];
+      return t ? t.charAt(0).toUpperCase() + t.slice(1) : cfg.fallbackDear;
+    };
+    var people = 0, lists = 0;
+    st.recips.forEach(function (r) { if (r.kind === 'file') { lists++; people += r.count || 0; } else { people++; } });
+    var first = st.recips[0];
+    var dear = !first ? nameOf(cfg.start.length ? cfg.start[0].label : '') : (first.kind === 'file' ? (first.firstName || cfg.fallbackDear) : nameOf(first.label));
+    var addRecip = function (r) { self.setState({ recips: self.state.recips.concat([r]), sent: false, err: '' }); };
+    var addTyped = function () {
+      var t = (self.toText || '').trim();
+      if (!t) { self.setState({ err: 'Type a username or Samaky ID first.' }); return; }
+      if (self.state.recips.some(function (r) { return r.label.toLowerCase() === t.toLowerCase(); })) { self.toText = ''; self.setState({ err: t + ' is already on the list.' }); return; }
+      self.toText = '';
+      addRecip({ kind: 'one', label: t });
+      setTimeout(function () { var el = document.getElementById('to'); if (el) el.focus(); }, 60);
+    };
     var stDefs = [
       { id: 'maky', label: 'Maky sticker', src: 'brand/maky.png' },
       { id: 'logo', label: cfg.logoLabel, src: cfg.logo },
@@ -181,7 +215,31 @@ class Component extends DCLogic {
     var anim = !this.settled;
     return {
       noSubmit: function (e) { e.preventDefault(); },
-      whos: cfg.whos.map(function (w) { return { label: w.label, on: w.id === st.who ? 'true' : 'false', style: chip(w.id === st.who), pick: function () { self.setState({ who: w.id, sent: false }); } }; }),
+      toText: this.toText,
+      setTo: function (e) { self.toText = e.target.value; },
+      toKey: function (e) { if (e.key === 'Enter') { e.preventDefault(); addTyped(); } },
+      addTo: addTyped,
+      upload: function (e) {
+        var f = e.target.files && e.target.files[0]; if (!f) return;
+        var isCsv = /\.csv$/i.test(f.name) || f.type === 'text/csv';
+        if (!isCsv) { addRecip({ kind: 'file', label: f.name + ' · names matched when you send', count: 0, firstName: '' }); return; }
+        var rd = new FileReader();
+        rd.onload = function () {
+          var rows = String(rd.result).split(/\r?\n/).map(function (l) { return l.trim(); }).filter(Boolean);
+          if (rows.length && /name|email|user|id/i.test(rows[0])) rows.shift();
+          var firstCell = rows.length ? rows[0].split(',')[0].replace(/"/g, '').trim() : '';
+          addRecip({ kind: 'file', label: f.name + ' · ' + rows.length + (rows.length === 1 ? ' person' : ' people'), count: rows.length, firstName: firstCell ? nameOf(firstCell) : '' });
+        };
+        rd.readAsText(f);
+      },
+      hasRecips: st.recips.length > 0,
+      recips: st.recips.map(function (r, i) {
+        return { label: r.label, isFile: r.kind === 'file',
+          style: 'display: inline-flex; align-items: center; gap: 6px; min-height: 38px; padding: 0 6px 0 14px; border-radius: 999px; font-size: 14px; font-weight: 600; ' + (r.kind === 'file' ? 'background: #FFFFFF; color: #1A1A1A; border: 1.5px dashed ' + cfg.accent + ';' : 'background: ' + cfg.accent + '; color: #FFFFFF;'),
+          remove: function () { var n = self.state.recips.slice(); n.splice(i, 1); self.setState({ recips: n, sent: false }); } };
+      }),
+      toHelp: st.err || ('Type a username (like ' + cfg.example + ') or Samaky ID, then press Add. For a big group, upload a CSV or Excel file with one person per row.'),
+      toHelpColor: st.err ? '#8E3B2E' : '#5E5B53',
       stickers: stDefs.map(function (d) {
         var on = d.id === st.sticker;
         return { label: d.label, src: d.src, radius: d.id === 'maky' ? '999px' : '0', img: d.id !== 'none', none: d.id === 'none', on: on ? 'true' : 'false',
@@ -191,16 +249,17 @@ class Component extends DCLogic {
       note: this.note, sig: this.sig,
       setNote: function (e) { self.note = e.target.value; },
       setSig: function (e) { self.sig = e.target.value; },
-      sendLabel: st.sent ? 'Sent' : who.send,
-      sent: st.sent, sentMsg: who.sentMsg,
-      send: function () { self.setState({ sent: true }); },
+      sendLabel: st.sent ? 'Sent' : (lists ? 'Send to list' : (people > 1 ? 'Send ' + people + ' letters' : 'Send letter')),
+      sent: st.sent,
+      sentMsg: lists ? 'Letters are on their way to everyone on your list. Each one is addressed by name.' : (people > 1 ? people + ' letters are on their way. Each one is addressed by name.' : 'Your letter to ' + dear + ' is on its way.'),
+      send: function () { if (!self.state.recips.length) { self.setState({ err: 'Add at least one person before sending.' }); return; } self.setState({ sent: true }); },
       draftLabel: st.drafted ? 'Draft saved' : 'Save draft',
       draft: function () { self.setState({ drafted: true }); },
       closed: !st.open, opened: st.open,
       open: function () { self.settled = false; self.setState({ open: true, kept: false }); setTimeout(function () { self.settled = true; }, 1500); },
       replay: function () { self.setState({ open: false }); },
       flapCls: anim ? 'lt-flap-anim' : '', letterCls: anim ? 'lt-up-anim' : '',
-      dear: who.dear,
+      dear: dear,
       hasSticker: sticker.id !== 'none', stickerSrc: sticker.src, stickerRadius: sticker.id === 'maky' ? '999px' : '0',
       sigName: comma > -1 ? this.sig.slice(0, comma).trim() : this.sig.trim(),
       sigRole: comma > -1 ? this.sig.slice(comma + 1).trim() : '',
