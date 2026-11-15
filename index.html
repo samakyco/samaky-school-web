@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Phones show the full desktop dashboard, scaled to fit; people can pinch to zoom. -->
+<meta name="viewport" content="width=1280">
 <title>Samaky for Schools</title>
 <link rel="icon" href="brand/maky.png">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&amp;family=Poppins:wght@400;500;600;700&amp;display=swap">
@@ -49,6 +50,8 @@ iframe.screen.on{visibility:visible;z-index:2}
 body.nav-collapsed #nav-toggle{left:16px;background:#471C72;box-shadow:0 3px 12px rgba(0,0,0,.2)}
 #nav-toggle svg{transition:transform .25s ease}
 body.nav-collapsed #nav-toggle svg{transform:scaleX(-1)}
+body.phone #maky-fab{zoom:var(--z,1);right:14px;bottom:14px;width:56px;height:56px}
+body.phone #maky-panel{zoom:var(--z,1);right:10px;bottom:80px;width:var(--pw,360px);height:var(--ph,520px)}
 @media (max-width:819px){#nav-toggle{display:none}}
 @media (max-width:520px){#maky-fab{right:16px;bottom:16px;width:60px;height:60px}#maky-panel{right:16px;bottom:88px;height:calc(100vh - 110px)}}
 </style>
@@ -226,6 +229,27 @@ body.nav-collapsed #nav-toggle svg{transform:scaleX(-1)}
   panel.querySelector('.mk-close').addEventListener('click', closePanel);
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !panel.hidden) { closePanel(); fab.focus(); } });
   renderChips();
+
+
+  // ---------- phones: keep Maky's button and chat at a normal, tappable size ----------
+  function fitPhone() {
+    var touch = ('ontouchstart' in window) || navigator.maxTouchPoints > 0;
+    var shortSide = Math.min(screen.width, screen.height), longSide = Math.max(screen.width, screen.height);
+    var phone = touch && shortSide < 820;
+    document.body.classList.toggle('phone', phone);
+    if (!phone) return;
+    var landscape = window.matchMedia('(orientation: landscape)').matches;
+    var deviceW = landscape ? longSide : shortSide, deviceH = landscape ? shortSide : longSide;
+    var z = document.documentElement.clientWidth / deviceW;
+    var root = document.body.style;
+    root.setProperty('--z', z.toFixed(3));
+    root.setProperty('--pw', Math.min(400, deviceW - 20) + 'px');
+    var visibleH = document.documentElement.clientHeight / z;   // what's on screen right now, in phone points
+    root.setProperty('--ph', Math.max(180, Math.min(620, visibleH - 110)) + 'px');
+  }
+  fitPhone();
+  window.addEventListener('resize', fitPhone);
+  window.addEventListener('orientationchange', function () { setTimeout(fitPhone, 250); });
 
   // ---------- start ----------
   var start = 'SchoolHome.html';
