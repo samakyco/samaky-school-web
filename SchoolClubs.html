@@ -59,15 +59,34 @@ a{color:#471C72}a:hover{color:#2E1149}
     <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 18px;">
       <div style="flex: 1 1 420px;">
         <h1 style="margin: 0; font-family: 'Fraunces', Georgia, serif; font-size: clamp(32px, 3.6vw, 44px); line-height: 1.05; letter-spacing: -1px;">Clubs</h1>
-        <p style="margin: 10px 0 0; font-size: 16px; line-height: 1.5; color: #5E5B53; max-width: 660px;">Student clubs that volunteer together on Samaky. See which nonprofits each club partners with, and help clubs that are still looking for one.</p>
+        <p style="margin: 10px 0 0; font-size: 16px; line-height: 1.5; color: #5E5B53; max-width: 660px;">Every club that has to serve this term, in one place. See where each club is in its requirement, who is waiting on whom, and help clubs that are still looking for a partner.</p>
       </div>
     </div>
 
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 18px;">
-      <div style="background: #FFFFFF; border: 1px solid #E0DCCD; border-radius: 24px; box-sizing: border-box; padding: 22px;"><div style="font-size: 15px; color: #5E5B53;">Clubs serving</div><div style="font-family: 'Fraunces', Georgia, serif; font-weight: 700; font-size: 44px; line-height: 1.1; color: #471C72; margin-top: 6px;">14</div></div>
-      <div style="background: #FFFFFF; border: 1px solid #E0DCCD; border-radius: 24px; box-sizing: border-box; padding: 22px;"><div style="font-size: 15px; color: #5E5B53;">Members who served</div><div style="font-family: 'Fraunces', Georgia, serif; font-weight: 700; font-size: 44px; line-height: 1.1; margin-top: 6px;">386</div></div>
-      <div style="background: #FFFFFF; border: 1px solid #E0DCCD; border-radius: 24px; box-sizing: border-box; padding: 22px;"><div style="font-size: 15px; color: #5E5B53;">Club hours this term</div><div style="font-family: 'Fraunces', Georgia, serif; font-weight: 700; font-size: 44px; line-height: 1.1; margin-top: 6px;">1,912</div></div>
-    </div>
+    <section aria-label="Fall service requirement" style="background: #FFFFFF; border: 1px solid #E0DCCD; border-radius: 24px; padding: 22px 24px; display: flex; flex-direction: column; gap: 16px;">
+      <div style="display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 16px;">
+        <h2 style="margin: 0; font-family: 'Fraunces', Georgia, serif; font-size: 22px;">Fall service requirement</h2>
+        <span style="font-size: 14px; font-weight: 700; color: #7A4A21; background: #F3E6DC; border-radius: 999px; padding: 6px 14px;">Due Fri, Dec 4 · {{daysLeft}} days left</span>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 14px;">
+        <div><div style="font-family: 'Fraunces', Georgia, serif; font-weight: 700; font-size: 40px; line-height: 1.1;">{{totalReq}}</div><div style="font-size: 14px; color: #5E5B53;">clubs required to serve</div></div>
+        <div><div style="font-family: 'Fraunces', Georgia, serif; font-weight: 700; font-size: 40px; line-height: 1.1; color: #471C72;">{{metCount}}</div><div style="font-size: 14px; color: #5E5B53;">requirement met</div></div>
+        <div><div style="font-family: 'Fraunces', Georgia, serif; font-weight: 700; font-size: 40px; line-height: 1.1;">{{officeCount}}</div><div style="font-size: 14px; color: #5E5B53;">waiting on your office</div></div>
+        <div><div style="font-family: 'Fraunces', Georgia, serif; font-weight: 700; font-size: 40px; line-height: 1.1; color: #7A4A21;">{{attnCount}}</div><div style="font-size: 14px; color: #5E5B53;">need attention, incl. {{needCount}} with no partner</div></div>
+      </div>
+      <div>
+        <div role="img" aria-label="{{metCount}} of {{totalReq}} clubs have met the requirement" style="display: flex; height: 12px; border-radius: 999px; overflow: hidden; background: #E5E1D3;">
+          <div style="width: {{metPct}}%; background: #471C72;"></div>
+          <div style="width: {{officePct}}%; background: #B79FD1;"></div>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 10px; font-size: 13px; color: #5E5B53;">
+          <span><span aria-hidden="true" style="display: inline-block; width: 10px; height: 10px; border-radius: 3px; background: #471C72; margin-right: 6px;"></span>Met</span>
+          <span><span aria-hidden="true" style="display: inline-block; width: 10px; height: 10px; border-radius: 3px; background: #B79FD1; margin-right: 6px;"></span>Waiting on your office</span>
+          <span><span aria-hidden="true" style="display: inline-block; width: 10px; height: 10px; border-radius: 3px; background: #E5E1D3; margin-right: 6px;"></span>Still in progress or no partner</span>
+        </div>
+      </div>
+      <p style="margin: 0; font-size: 14px; line-height: 1.5; color: #5E5B53;">Each club moves through four steps: <b style="color: #1A1A1A;">Partner found</b> → <b style="color: #1A1A1A;">Served</b> → <b style="color: #1A1A1A;">Reflection in</b> → <b style="color: #1A1A1A;">Approved</b>. Steps fill in on their own as the nonprofit verifies hours and the club leader submits the reflection.</p>
+    </section>
 
     <section style="background: #F9F6FC; border: 1.5px solid #471C72; border-radius: 24px; padding: 22px 24px;">
       <h2 style="margin: 0 0 4px; font-family: 'Fraunces', Georgia, serif; font-size: 22px;">Looking for a partner ({{needCount}})</h2>
@@ -81,7 +100,12 @@ a{color:#471C72}a:hover{color:#2E1149}
       </sc-for>
     </section>
 
-    <div role="group" aria-label="Filter clubs by cause" style="display: flex; flex-wrap: wrap; gap: 8px;">
+    <div role="group" aria-label="Filter clubs by status" style="display: flex; flex-wrap: wrap; gap: 8px;">
+      <sc-for list="{{statusFilters}}" as="f" hint-placeholder-count="4">
+        <button type="button" onClick="{{f.pick}}" aria-pressed="{{f.on}}" style="{{f.style}}">{{f.label}}</button>
+      </sc-for>
+    </div>
+    <div role="group" aria-label="Filter clubs by cause" style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: -12px;">
       <sc-for list="{{filters}}" as="f" hint-placeholder-count="5">
         <button type="button" onClick="{{f.pick}}" aria-pressed="{{f.on}}" style="{{f.style}}">{{f.label}}</button>
       </sc-for>
@@ -94,40 +118,65 @@ a{color:#471C72}a:hover{color:#2E1149}
             <div aria-hidden="true" style="width: 48px; height: 48px; flex: 0 0 48px; border-radius: 14px; background: {{c.bg}}; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 15px;">{{c.ini}}</div>
             <div style="min-width: 0;"><div style="font-weight: 700; font-size: 17px;">{{c.name}}</div><div style="font-size: 13px; color: #5E5B53;">{{c.members}} members · Led by {{c.lead}}</div></div>
           </div>
-          <div style="font-size: 14px; line-height: 1.5;"><span style="color: #5E5B53;">Partners with</span> <span style="font-weight: 700;">{{c.partner}}</span></div>
-          <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; border-top: 1px solid #E5E1D3; padding-top: 12px;">
-            <div><div style="font-family: 'Fraunces', Georgia, serif; font-weight: 700; font-size: 24px; color: #471C72;">{{c.hrs}}</div><div style="font-size: 13px; color: #5E5B53;">hours this term</div></div>
-            <div><div style="font-weight: 700; font-size: 14px; margin-top: 4px;">{{c.next}}</div><div style="font-size: 13px; color: #5E5B53;">next shift</div></div>
+          <div style="font-size: 14px; line-height: 1.5;"><span style="color: #5E5B53;">Partners with</span> <span style="font-weight: 700;">{{c.partner}}</span><sc-if value="{{c.returning}}"><br><span style="font-size: 13px; color: #471C72; font-weight: 600;">{{c.returning}}</span></sc-if></div>
+          <div style="border-top: 1px solid #E5E1D3; padding-top: 12px;">
+            <div style="display: flex; align-items: center; justify-content: space-between; gap: 10px;">
+              <span style="{{c.tagStyle}}">{{c.stageLabel}}</span>
+              <span style="font-size: 13px; color: #5E5B53;">Step {{c.stage}} of 4</span>
+            </div>
+            <div aria-hidden="true" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; margin-top: 10px;">
+              <sc-for list="{{c.segs}}" as="s" hint-placeholder-count="4"><div style="height: 6px; border-radius: 999px; background: {{s}};"></div></sc-for>
+            </div>
+            <div style="font-size: 14px; line-height: 1.45; margin-top: 10px;"><span style="color: #5E5B53;">Next step:</span> {{c.nextStep}}</div>
           </div>
-          <button type="button" onClick="{{c.msg}}" style="{{c.btnStyle}}">{{c.btn}}</button>
+          <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; border-top: 1px solid #E5E1D3; padding-top: 12px;">
+            <div><div style="font-family: 'Fraunces', Georgia, serif; font-weight: 700; font-size: 24px; color: #471C72;">{{c.hrs}}</div><div style="font-size: 13px; color: #5E5B53;">verified hours</div></div>
+            <div><div style="font-weight: 700; font-size: 14px; margin-top: 4px;">{{c.next}}</div><div style="font-size: 13px; color: #5E5B53;">{{c.nextLabel}}</div></div>
+          </div>
+          <sc-if value="{{c.hasLink}}"><a href="{{c.href}}" style="{{c.btnStyle}} display: inline-flex; align-items: center; text-decoration: none;">{{c.btn}}</a></sc-if>
+          <sc-if value="{{c.noLink}}"><button type="button" onClick="{{c.act}}" disabled="{{c.sent}}" style="{{c.btnStyle}}">{{c.btn}}</button></sc-if>
         </article>
       </sc-for>
     </div>
-    <p style="margin: 0; font-size: 14px; color: #5E5B53;">Clubs don't verify hours. The nonprofit does, and your office approves them for credit. You only see member counts, never private chats.</p>
+    <sc-if value="{{noClubs}}"><p style="margin: 0; font-size: 15px; color: #5E5B53;">No clubs match these filters.</p></sc-if>
+    <p style="margin: 0; font-size: 14px; color: #5E5B53;">Clubs don't verify hours. The nonprofit does, and your office approves them for credit. Club leaders see their own club's status, not other clubs'. You only see member counts, never private chats.</p>
   </main>
 
 </div>
 </template>
 <script type="text/x-dc" id="dc-logic">
 class Component extends DCLogic {
-  constructor(props) { super(props); this.state = { f: 'all', msg: {}, helped: {} }; }
+  constructor(props) { super(props); this.state = { f: 'all', sf: 'all', act: {}, helped: {} }; }
   renderVals() {
     var self = this, st = this.state;
+    // stage: 1 Partner found, 2 Served, 3 Reflection in (waiting on office), 4 Approved
     var data = [
-      { id: 'phs', ini: 'PH', bg: '#A8577E', name: 'Pre-Health Society', members: 56, lead: 'Grace L.', partner: 'North Star Blood Center', cause: 'health', hrs: '410', next: 'Thu, Nov 12' },
-      { id: 'ts', ini: 'TS', bg: '#471C72', name: 'Tommies Serve', members: 42, lead: 'Sophea K.', partner: 'Eastside Senior Commons', cause: 'seniors', hrs: '318', next: 'Sat, Nov 7' },
-      { id: 'bfg', ini: 'BG', bg: '#8E5A3B', name: 'Business for Good', members: 35, lead: 'Omar H.', partner: 'Northside Food Shelf', cause: 'hunger', hrs: '276', next: 'Sat, Nov 21' },
-      { id: 'efc', ini: 'EC', bg: '#3F7E44', name: 'Engineers for Community', members: 28, lead: 'Noah K.', partner: 'Green Corridor Cleanup', cause: 'environment', hrs: '204', next: 'Sun, Nov 15' },
-      { id: 'edu', ini: 'ED', bg: '#7B5BA6', name: 'Future Teachers Club', members: 22, lead: 'Elena V.', partner: 'Riverbend Literacy Project', cause: 'education', hrs: '188', next: 'Wed, Nov 4' },
-      { id: 'psy', ini: 'PS', bg: '#C78B7B', name: 'Psychology Club', members: 30, lead: 'Sofia R.', partner: 'Lakeview Animal Rescue', cause: 'animals', hrs: '142', next: 'Sat, Nov 14' }
+      { id: 'phs', ini: 'PH', bg: '#A8577E', name: 'Pre-Health Society', members: 56, lead: 'Grace L.', partner: 'North Star Blood Center', cause: 'health', hrs: '410', stage: 4, returning: 'Returning partner · 3rd semester together', next: 'Thu, Dec 10', nextLabel: 'next shift' },
+      { id: 'psy', ini: 'PS', bg: '#C78B7B', name: 'Psychology Club', members: 30, lead: 'Sofia R.', partner: 'Lakeview Animal Rescue', cause: 'animals', hrs: '142', stage: 4, returning: '', next: 'None yet', nextLabel: 'next shift' },
+      { id: 'ts', ini: 'TS', bg: '#471C72', name: 'Tommies Serve', members: 42, lead: 'Sophea K.', partner: 'Eastside Senior Commons', cause: 'seniors', hrs: '318', stage: 3, returning: 'Returning partner · 2nd semester together', next: 'Nov 20', nextLabel: 'reflection submitted' },
+      { id: 'pot', ini: 'OT', bg: '#4F7CAC', name: 'Pre-OT Club', members: 19, lead: 'Ava T.', partner: 'Northside Food Shelf', cause: 'hunger', hrs: '57', stage: 3, returning: '', next: 'Nov 23', nextLabel: 'reflection submitted' },
+      { id: 'bfg', ini: 'BG', bg: '#8E5A3B', name: 'Business for Good', members: 35, lead: 'Omar H.', partner: 'Northside Food Shelf', cause: 'hunger', hrs: '96', stage: 2, returning: '', next: 'Nov 7', nextLabel: 'served' },
+      { id: 'chem', ini: 'CH', bg: '#5E8C61', name: 'Chemistry Club', members: 18, lead: 'Lina P.', partner: 'Green Corridor Cleanup', cause: 'environment', hrs: '36', stage: 2, returning: '', next: 'Nov 14', nextLabel: 'served' },
+      { id: 'efc', ini: 'EC', bg: '#3F7E44', name: 'Engineers for Community', members: 28, lead: 'Noah K.', partner: 'Green Corridor Cleanup', cause: 'environment', hrs: '0', stage: 1, returning: '', next: 'Sat, Nov 28', nextLabel: 'first shift' },
+      { id: 'edu', ini: 'ED', bg: '#7B5BA6', name: 'Future Teachers Club', members: 22, lead: 'Elena V.', partner: 'Riverbend Literacy Project', cause: 'education', hrs: '0', stage: 1, returning: '', next: 'Not booked', nextLabel: 'first shift' }
     ];
-    var fs = [['all', 'All'], ['health', 'Health'], ['hunger', 'Hunger'], ['education', 'Education'], ['seniors', 'Seniors'], ['environment', 'Environment']];
-    var b = 'min-height: 44px; padding: 0 18px; border-radius: 999px; font: inherit; font-size: 14px; font-weight: 700; cursor: pointer; ';
     var needDefs = [
       { id: 'ult', name: 'Ultimate Frisbee Club', sub: '24 members · wants a weekend outdoor project' },
       { id: 'aasa', name: 'Asian American Student Association', sub: '61 members · interested in youth mentoring' }
     ];
+    var labels = ['', 'Partner found', 'Served', 'Waiting on your office', 'Requirement met'];
     var tag = 'font-size: 13px; font-weight: 700; border-radius: 999px; padding: 5px 12px; ';
+    var tagStyles = ['', tag + 'background: #F3E6DC; color: #7A4A21;', tag + 'background: #F3E6DC; color: #7A4A21;', tag + 'background: #F9F6FC; color: #471C72; border: 1px solid #B79FD1;', tag + 'background: #471C72; color: #FFFFFF;'];
+    var b = 'min-height: 44px; padding: 0 18px; border-radius: 999px; font: inherit; font-size: 14px; font-weight: 700; cursor: pointer; box-sizing: border-box; ';
+    var outline = b + 'align-self: flex-start; border: 1.5px solid #471C72; background: #FFFFFF; color: #471C72;';
+    var solid = b + 'align-self: flex-start; border: 1.5px solid #471C72; background: #471C72; color: #FFFFFF;';
+    var doneBtn = b + 'align-self: flex-start; border: 1.5px solid #E5E1D3; background: #E5E1D3; color: #5E5B53; cursor: default;';
+    var nextSteps = {
+      1: function (c) { return c.next === 'Not booked' ? 'The club hasn\'t booked a shift yet. Nudge ' + c.lead + ' before the deadline.' : 'First shift is booked. Hours appear once ' + c.partner + ' verifies them.'; },
+      2: function (c) { return 'Hours are verified. Waiting on the club reflection from ' + c.lead.replace(/\.$/, '') + '.'; },
+      3: function (c) { return 'Reflection is in. Review it and approve the club\'s hours.'; },
+      4: function (c) { return 'Done for this term. Hours are on members\' transcripts.'; }
+    };
     var needs = needDefs.map(function (n) {
       var done = !!st.helped[n.id];
       return { name: n.name, sub: n.sub, done: done, tag: done ? 'Partner suggested' : 'Needs a partner',
@@ -136,15 +185,42 @@ class Component extends DCLogic {
         btnStyle: b + (done ? 'border: 0; background: #E5E1D3; color: #5E5B53; cursor: default;' : 'border: 0; background: #471C72; color: #FFFFFF;'),
         act: function () { var h = Object.assign({}, self.state.helped); h[n.id] = true; self.setState({ helped: h }); } };
     });
+    var noPartner = needs.filter(function (n) { return !n.done; }).length;
+    var total = data.length + needDefs.length;
+    var met = data.filter(function (c) { return c.stage === 4; }).length;
+    var office = data.filter(function (c) { return c.stage === 3; }).length;
+    var attn = data.filter(function (c) { return c.stage <= 2; }).length + needDefs.length;
+    var match = function (c) {
+      if (st.sf === 'attn' && c.stage > 2) return false;
+      if (st.sf === 'office' && c.stage !== 3) return false;
+      if (st.sf === 'met' && c.stage !== 4) return false;
+      return st.f === 'all' || c.cause === st.f;
+    };
+    var chip = function (on) { return b + (on ? 'border: 1.5px solid #471C72; background: #471C72; color: #FFFFFF;' : 'border: 1.5px solid #E0DCCD; background: #FFFFFF; color: #1A1A1A;'); };
+    var sfs = [['all', 'All clubs · ' + data.length], ['attn', 'Need attention · ' + (attn - needDefs.length)], ['office', 'Waiting on your office · ' + office], ['met', 'Requirement met · ' + met]];
+    var fs = [['all', 'All causes'], ['health', 'Health'], ['hunger', 'Hunger'], ['education', 'Education'], ['seniors', 'Seniors'], ['environment', 'Environment']];
+    var clubs = data.filter(match).map(function (c) {
+      var sent = !!st.act[c.id];
+      var segs = [1, 2, 3, 4].map(function (i) { return i <= c.stage ? '#471C72' : '#E5E1D3'; });
+      var o = { segs: segs, stageLabel: labels[c.stage], tagStyle: tagStyles[c.stage], nextStep: nextSteps[c.stage](c), sent: sent, hasLink: false, noLink: true };
+      if (c.stage === 3) { o.hasLink = true; o.noLink = false; o.href = 'SchoolApprove.html'; o.btn = 'Review and approve'; o.btnStyle = solid; }
+      else if (c.stage === 4) { o.hasLink = true; o.noLink = false; o.href = 'SchoolTranscripts.html'; o.btn = 'See transcripts'; o.btnStyle = outline; }
+      else {
+        var verb = c.stage === 2 ? 'Remind about reflection' : 'Message club leader';
+        o.btn = sent ? (c.stage === 2 ? 'Maky sent a reminder' : 'Message sent') : verb;
+        o.btnStyle = sent ? doneBtn : outline;
+        o.act = function () { var a = Object.assign({}, self.state.act); a[c.id] = true; self.setState({ act: a }); };
+      }
+      return Object.assign({}, c, o);
+    });
     return {
-      needs: needs, needCount: needs.filter(function (n) { return !n.done; }).length,
-      filters: fs.map(function (x) { var on = x[0] === st.f; return { label: x[1], on: on ? 'true' : 'false', style: b + (on ? 'border: 1.5px solid #471C72; background: #471C72; color: #FFFFFF;' : 'border: 1.5px solid #E0DCCD; background: #FFFFFF; color: #1A1A1A;'), pick: function () { self.setState({ f: x[0] }); } }; }),
-      clubs: data.filter(function (c) { return st.f === 'all' || c.cause === st.f; }).map(function (c) {
-        var sent = !!st.msg[c.id];
-        return Object.assign({}, c, { btn: sent ? 'Message sent' : 'Message club leader',
-          btnStyle: b + 'align-self: flex-start; ' + (sent ? 'border: 1.5px solid #471C72; background: #F9F6FC; color: #471C72;' : 'border: 1.5px solid #471C72; background: #FFFFFF; color: #471C72;'),
-          msg: function () { var m = Object.assign({}, self.state.msg); m[c.id] = true; self.setState({ msg: m }); } });
-      })
+      daysLeft: 8,
+      totalReq: total, metCount: met, officeCount: office, attnCount: attn,
+      metPct: Math.round(met / total * 100), officePct: Math.round(office / total * 100),
+      needs: needs, needCount: noPartner,
+      statusFilters: sfs.map(function (x) { var on = x[0] === st.sf; return { label: x[1], on: on ? 'true' : 'false', style: chip(on), pick: function () { self.setState({ sf: x[0] }); } }; }),
+      filters: fs.map(function (x) { var on = x[0] === st.f; return { label: x[1], on: on ? 'true' : 'false', style: chip(on), pick: function () { self.setState({ f: x[0] }); } }; }),
+      clubs: clubs, noClubs: clubs.length === 0
     };
   }
 }
